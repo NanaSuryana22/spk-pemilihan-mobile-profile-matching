@@ -10,16 +10,16 @@
     <title>SPK Pemilihan Mobil Menggunakan Metode Profile Matching</title>
 
     <!-- Bootstrap -->
-    <link href="{{ url('template/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="{{ url('template/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- NProgress -->
-    <link href="{{ url('template/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
     <!-- Animate.css -->
-    <link href="{{ url('template/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="{{ url('template/build/css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/build/css/custom.min.css') }}" rel="stylesheet">
   </head>
 
   <body class="login">

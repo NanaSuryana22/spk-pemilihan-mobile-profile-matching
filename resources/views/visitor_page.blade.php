@@ -10,14 +10,14 @@
     <title>SPK Pemilihan Mobil Menggunakan Metode Profile Matching</title>
 
     <!-- Bootstrap -->
-    <link href="{{ url('template/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="{{ url('template/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- NProgress -->
-    <link href="{{ url('template/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="{{ url('template/build/css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/build/css/custom.min.css') }}" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -54,15 +54,15 @@
     </div>
 
     <!-- jQuery -->
-    <script src="{{ url('template/vendors/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('template/vendors/jquery/dist/jquery.min.js') }}"></script>
     <!-- Bootstrap -->
-   <script src="{{ url('template/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+   <script src="{{ asset('template/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <!-- FastClick -->
-    <script src="{{ url('template/vendors/fastclick/lib/fastclick.js') }}"></script>
+    <script src="{{ asset('template/vendors/fastclick/lib/fastclick.js') }}"></script>
     <!-- NProgress -->
-    <script src="{{ url('template/vendors/nprogress/nprogress.js') }}"></script>
+    <script src="{{ asset('template/vendors/nprogress/nprogress.js') }}"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="{{ url('template/build/js/custom.min.js') }}"></script>
+    <script src="{{ asset('template/build/js/custom.min.js') }}"></script>
   </body>
 </html>
