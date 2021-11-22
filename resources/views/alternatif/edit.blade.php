@@ -64,6 +64,24 @@
                                     @endif
 																	</div>
 																</div>
+																@foreach ($kriteria as $k)
+																	<div class="item form-group">
+																		<label class="col-form-label col-md-3 col-sm-3 label-align" for="{{ $k->nama }}">{{ $k->nama }} <span class="required">*</span>
+																		</label>
+																		<div class="col-md-6 col-sm-6">
+																			<?php
+																			$sub_kriteria_id = $opt_alternatif->where('kriteria_id', $k->id)->where('alternatif_id', $alternatif->id)->first()->sub_kriteria_id;
+																			?>
+																			<input type="hidden" name="{{ $k->nama }}" value="$k->id" />
+																			<select class="form-control" name="{{ $k->id }}" id="{{ $k->id }}" required>
+																				<option value="{{ $sub_kriteria_id }}">Pilih...</option>
+																				@foreach ($k->sub_kriterias as $s)
+																					<option value="{{ $s->id }}" {{ ($s->id == $sub_kriteria_id) ? 'selected' : '' }}>{{ $s->nama }}</option>
+																				@endforeach
+																			</select>
+																		</div>
+																	</div>
+																@endforeach
 																<div class="ln_solid"></div>
 																<div class="item form-group">
 																	<div class="col-md-6 col-sm-6 offset-md-3">

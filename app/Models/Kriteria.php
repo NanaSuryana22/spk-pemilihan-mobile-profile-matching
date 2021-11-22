@@ -26,6 +26,11 @@ class Kriteria extends Model
         return $this->hasMany('App\Models\SubKriteria', 'kriteria_id');
     }
 
+    public function opt_alternatifs()
+    {
+        return $this->hasMany('App\Models\OptAlternatif', 'kriteria_id');
+    }
+
     public function scopeSearch($query, $term) {
         $term = "%$term%";
         $query->where(function($query) use ($term) {

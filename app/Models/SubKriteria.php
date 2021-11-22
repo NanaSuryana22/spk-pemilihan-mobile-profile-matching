@@ -20,6 +20,11 @@ class SubKriteria extends Model
         return $this->belongsTo('App\Models\Kriteria', 'kriteria_id');
     }
 
+    public function opt_alternatifs()
+    {
+        return $this->hasMany('App\Models\OptAlternatif', 'sub_kriteria_id');
+    }
+
     public function scopeSearch($query, $term) {
         $term = "%$term%";
         $query->where(function($query) use ($term) {

@@ -12,4 +12,9 @@ class Alternatif extends Model
     protected $fillable = ['nama', 'image', 'desc'];
 
     protected $table = 'alternatif';
+
+    public function opt_alternatifs()
+    {
+        return $this->hasMany('App\Models\OptAlternatif', 'alternatif_id');
+    }
 }

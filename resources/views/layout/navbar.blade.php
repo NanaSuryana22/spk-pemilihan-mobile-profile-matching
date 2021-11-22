@@ -13,7 +13,7 @@ $auth = Auth::user()->name;
 						<?= $auth ?>
 					</a>
 					<div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item"  href="javascript:;"> Profile</a>
+						<a class="dropdown-item"  href="{{ route('profile.show') }}"> Profile</a>
 						<a class="dropdown-item"  href="{{ route('logout') }}" onclick="return logout(event);" title="Keluar Aplikasi ?"><i class="fa fa-sign-out pull-right"></i>
 							<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
 								{{ csrf_field() }}
