@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+	  <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>SPK Pemilihan Mobil | @yield('title')</title>
 
@@ -18,6 +18,7 @@
     <link href="{{ url('template/vendors/nprogress/nprogress.css" rel="stylesheet') }}">
     <!-- iCheck -->
     <link href="{{ url('template/vendors/iCheck/skins/flat/green.css" rel="stylesheet') }}">
+    <link href="{{ url('css/table-responsive.css') }}" rel="stylesheet">
 	
     <!-- bootstrap-progressbar -->
     <link href="{{ url('template/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') }}" rel="stylesheet">
@@ -28,6 +29,7 @@
 
     <!-- Custom Theme Style -->
     <link href="{{ url('template/build/css/custom.min.css') }}" rel="stylesheet">
+    @livewireStyles
   </head>
 
   <body class="nav-md">
@@ -125,6 +127,7 @@
               }
        }
     </script>
-	
+    @stack('script')
+    @livewireScripts
   </body>
 </html>

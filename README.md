@@ -64,3 +64,9 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Connection information for default credential.
+Connection info string:
+   "dbname=dqt0fk7ot62mn host=ec2-52-72-155-37.compute-1.amazonaws.com port=5432 user=fbbvferijmogdx password=eb72ff0ad75e1cac1ee11a7e1f280186fadf60ad3ff8328af68af26d017cc9e9 sslmode=require"
+Connection URL:
+   postgres://fbbvferijmogdx:eb72ff0ad75e1cac1ee11a7e1f280186fadf60ad3ff8328af68af26d017cc9e9@ec2-52-72-155-37.compute-1.amazonaws.com:5432/dqt0fk7ot62mn
