@@ -15,7 +15,9 @@ class AlternatifIndex extends Component
 
     public function render()
     {
-        return view('livewire.alternatif-index', ['datas' => Alternatif::where('nama','like', '%' . $this->search . '%')->paginate(15)
+        return view('livewire.alternatif-index', ['datas' => Alternatif::where('nama','like', '%' . $this->search . '%')
+                                                                        ->orWhere('desc', 'like', '%' . $this->search . '%')
+                                                                        ->paginate(15)
                                                  ]);
     }
 }
