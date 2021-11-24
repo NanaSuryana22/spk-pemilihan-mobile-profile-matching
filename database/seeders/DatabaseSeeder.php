@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(JenisKriteriaSeeder::class);
         $this->call(SelisihSeeder::class);
         $this->call(KriteriaSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }
