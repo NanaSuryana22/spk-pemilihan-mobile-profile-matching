@@ -32,6 +32,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::put('updatesubkriteria/{id}', 'App\Http\Controllers\KriteriaController@updatesubkriteria')->name('updatesubkriteria');
     Route::delete('destroysubkriteria/{id}', 'App\Http\Controllers\KriteriaController@destroysubkriteria')->name('destroysubkriteria');
     Route::resource('alternatif', 'App\Http\Controllers\AlternatifController');
+    Route::resource('penilaian', 'App\Http\Controllers\PenilaianController');
+    Route::resource('users', 'App\Http\Controllers\UserController');
 }); 
 
 require __DIR__.'/auth.php';

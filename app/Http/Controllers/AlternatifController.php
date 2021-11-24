@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Alternatif;
 use Illuminate\Http\Request;
 use App\Http\Requests\AlternatifRequest;
+use App\Models\OptAlternatif;
+use App\Models\Kriteria;
+use App\Models\SubKriteria;
 use Session;
 use Illuminate\Support\Str;
+use PhpParser\Node\Stmt\While_;
+use DB;
 
 class AlternatifController extends Controller
 {
@@ -35,7 +40,9 @@ class AlternatifController extends Controller
      */
     public function create()
     {
-        return view('alternatif.create');
+        $kriteria = Kriteria::orderBy('nama', 'asc')->get();
+        $subkriteria = SubKriteria::orderBy('nama', 'asc')->get();
+        return view('alternatif.create')->with('kriteria', $kriteria)->with('subkriteria', $subkriteria);
     }
 
     /**
@@ -60,6 +67,16 @@ class AlternatifController extends Controller
         $data->desc = $request->desc;
         $data->save();
 
+        $kriteria = Kriteria::orderBy('nama', 'asc')->get();
+        foreach($kriteria as $n) {
+            $opt_alternatif = new OptAlternatif();
+            $opt_alternatif->alternatif_id = $data->id;
+            $opt_alternatif->kriteria_id = $n->id;
+            $id = $n->id;
+            $opt_alternatif->sub_kriteria_id = $request->$id;
+            $opt_alternatif->save();
+        }
+
         Session::flash("notice", "Data mobil $data->nama Berhasil Dibuat.");
         return redirect()->route("alternatif.show", $data);
     }
@@ -73,7 +90,8 @@ class AlternatifController extends Controller
     public function show($id)
     {
         $alternatif = Alternatif::find($id);
-        return view('alternatif.show')->with('alternatif', $alternatif);
+        $opt_alternatif = $alternatif->opt_alternatifs;
+        return view('alternatif.show')->with('alternatif', $alternatif)->with('opt_alternatif', $opt_alternatif);
     }
 
     /**
@@ -84,8 +102,10 @@ class AlternatifController extends Controller
      */
     public function edit($id)
     {
-        $alternatif = Alternatif::find($id);
-        return view('alternatif.edit')->with('alternatif', $alternatif);
+        $alternatif     = Alternatif::find($id);
+        $kriteria       = Kriteria::orderBy('nama', 'asc')->get();
+        $opt_alternatif = $alternatif->opt_alternatifs;
+        return view('alternatif.edit')->with('alternatif', $alternatif)->with('kriteria', $kriteria)->with('opt_alternatif', $opt_alternatif);
     }
 
     /**
@@ -112,6 +132,24 @@ class AlternatifController extends Controller
         $data->nama = $request->nama;
         $data->desc = $request->desc;
         $data->save();
+
+        $kriteria = Kriteria::orderBy('nama', 'asc')->get();
+        foreach($kriteria as $n) {
+          $request_kriteria_id = $n->id;
+          $opt_alternatif = OptAlternatif::where('kriteria_id', $n->id)->where('alternatif_id', $data->id)->first();
+          if ($opt_alternatif !== null) {
+            $kriteria_r = $n->id;
+            $opt_alternatif->sub_kriteria_id = $request->$kriteria_r;
+            $opt_alternatif->save();
+          } else {
+            $opt_alternatif = new OptAlternatif();
+            $opt_alternatif->alternatif_id = $data->id;
+            $opt_alternatif->kriteria_id = $n->id;
+            $id = $n->id;
+            $opt_alternatif->sub_kriteria_id = $request->$id;
+            $opt_alternatif->save();
+          }
+        }
 
         Session::flash("notice", "Data mobil $data->nama Berhasil Diubah.");
         return redirect()->route("alternatif.show", $data);

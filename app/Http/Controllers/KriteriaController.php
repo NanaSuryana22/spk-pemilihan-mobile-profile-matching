@@ -67,7 +67,7 @@ class KriteriaController extends Controller
     public function show($id)
     {
         $kriteria = Kriteria::find($id);
-        $datas    = SubKriteria::where('kriteria_id', $id)->orderBy('created_at', 'desc')->paginate(10);
+        $datas    = SubKriteria::where('kriteria_id', $id)->orderBy('nilai', 'desc')->paginate(10);
         return view('kriteria.show')->with('kriteria', $kriteria)->with('datas', $datas);
     }
 

@@ -50,7 +50,7 @@
 																	<label class="col-form-label col-md-3 col-sm-3 label-align" for="desc">Deskripsi <span class="required">*</span>
 																	</label>
 																	<div class="col-md-6 col-sm-6 ">
-																		<textarea name="desc" id="desc" cols="30" rows="10" class="form-control">{{ old('desc') }}</textarea>
+																		<textarea name="desc" id="desc" cols="20" rows="5" class="form-control">{{ old('desc') }}</textarea>
 																		@if($errors->has('desc'))
 																			<span class="invalid-feedback" role="alert">
                                       	<strong>{{$errors->first('desc') }}</strong>
@@ -58,6 +58,21 @@
                                     @endif
 																	</div>
 																</div>
+																@foreach ($kriteria as $k)
+																	<div class="item form-group">
+																		<label class="col-form-label col-md-3 col-sm-3 label-align" for="{{ $k->nama }}">{{ $k->nama }} <span class="required">*</span>
+																		</label>
+																		<div class="col-md-6 col-sm-6">
+																			<input type="hidden" name="{{ $k->nama }}" value="$k->id" />
+																			<select class="form-control" name="{{ $k->id }}" id="{{ $k->id }}" required>
+																				<option value="">Pilih...</option>
+																				@foreach ($k->sub_kriterias as $s)
+																					<option value="{{ $s->id }}">{{ $s->nama }}</option>
+																				@endforeach
+																			</select>
+																		</div>
+																	</div>
+																@endforeach
 																<div class="ln_solid"></div>
 																<div class="item form-group">
 																	<div class="col-md-6 col-sm-6 offset-md-3">

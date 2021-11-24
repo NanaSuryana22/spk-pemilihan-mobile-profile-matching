@@ -29,6 +29,7 @@
 
     <!-- Custom Theme Style -->
     <link href="{{ url('template/build/css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{ url('css/custom.css') }}" rel="stylesheet">
     @livewireStyles
   </head>
 
