@@ -15,6 +15,6 @@ class AlternatifSeeder extends Seeder
      */
     public function run()
     {
-        //
+
     }
 }

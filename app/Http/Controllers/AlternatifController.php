@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alternatif;
-use Illuminate\Http\Request;
 use App\Http\Requests\AlternatifRequest;
 use App\Models\OptAlternatif;
 use App\Models\Kriteria;
 use App\Models\SubKriteria;
 use Session;
 use Illuminate\Support\Str;
-use PhpParser\Node\Stmt\While_;
-use DB;
 
 class AlternatifController extends Controller
 {
@@ -40,8 +37,8 @@ class AlternatifController extends Controller
      */
     public function create()
     {
-        $kriteria = Kriteria::orderBy('nama', 'asc')->get();
-        $subkriteria = SubKriteria::orderBy('nama', 'asc')->get();
+        $kriteria = Kriteria::orderBy('jenis_kriteria_id', 'asc')->get();
+        $subkriteria = SubKriteria::orderBy('kriteria_id', 'asc')->get();
         return view('alternatif.create')->with('kriteria', $kriteria)->with('subkriteria', $subkriteria);
     }
 
@@ -103,7 +100,7 @@ class AlternatifController extends Controller
     public function edit($id)
     {
         $alternatif     = Alternatif::find($id);
-        $kriteria       = Kriteria::orderBy('nama', 'asc')->get();
+        $kriteria       = Kriteria::orderBy('jenis_kriteria_id', 'asc')->get();
         $opt_alternatif = $alternatif->opt_alternatifs;
         return view('alternatif.edit')->with('alternatif', $alternatif)->with('kriteria', $kriteria)->with('opt_alternatif', $opt_alternatif);
     }
@@ -153,7 +150,7 @@ class AlternatifController extends Controller
 
         Session::flash("notice", "Data mobil $data->nama Berhasil Diubah.");
         return redirect()->route("alternatif.show", $data);
-        
+
     }
 
     /**
