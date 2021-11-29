@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\JenisKriteria;
 use App\Models\Kriteria;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class KriteriaSeeder extends Seeder
 {

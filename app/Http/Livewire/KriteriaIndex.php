@@ -20,7 +20,7 @@ class KriteriaIndex extends Component
                                               'datas' => Kriteria::when($this->filter, function($query) {
                                                                         $query->where('jenis_kriteria_id', $this->filter);
                                                                           })->search(trim($this->search))
-                                                                            ->orderBy('created_at', 'desc')
+                                                                            ->orderBy('jenis_kriteria_id', 'asc')
                                                                             ->paginate(12)
                                              ]);
     }
