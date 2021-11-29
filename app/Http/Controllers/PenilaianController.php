@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Kriteria;
 use App\Models\SubKriteria;
 use App\Models\Alternatif;
+use App\Models\JenisKriteria;
 use App\Models\OptAlternatif;
+use Illuminate\Support\Facades\DB;
 
 class PenilaianController extends Controller
 {
@@ -17,20 +19,15 @@ class PenilaianController extends Controller
      */
     public function index(Request $request)
     {
-        $mobil = Alternatif::orderBy('id', 'asc')->get();
-        $kriteria = Kriteria::orderBy('nama', 'asc')->get();
+        $mobil        = Alternatif::orderBy('id', 'asc')->get();
+        $kriteria     = Kriteria::orderBy('jenis_kriteria_id', 'asc')->get();
         $sub_kriteria = SubKriteria::orderBy('nama', 'asc')->get();
-        return view('penilaian.index')->with('kriteria', $kriteria)->with('sub_kriteria', $sub_kriteria)->with('mobil', $mobil);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        if ($request !== null) {
+            $request = $request;
+        } else {
+            $request = null;
+        }
+        return view('penilaian.index')->with('kriteria', $kriteria)->with('sub_kriteria', $sub_kriteria)->with('mobil', $mobil)->with('request', $request);
     }
 
     /**
@@ -39,9 +36,24 @@ class PenilaianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function profile_matching(Request $request)
     {
-        //
+        $mobil          = Alternatif::orderBy('id', 'asc')->get();
+        $kriteria       = Kriteria::orderBy('jenis_kriteria_id', 'asc')->get();
+        $sub_kriteria   = SubKriteria::orderBy('nama', 'asc')->get();
+        $jenis_kriteria = DB::select("select k.id as id_kriteria ,jk.nama as nama_jenis from kriteria k LEFT JOIN jenis_kriterias jk ON jk.id = k.jenis_kriteria_id order by k.id");
+        $opt_alternatifs = OptAlternatif::orderBy('alternatif_id', 'asc')->get();
+        if ($request !== null) {
+            $request = $request;
+        } else {
+            $request = null;
+        }
+        return view('penilaian.profile_matching')->with('kriteria', $kriteria)
+                                                 ->with('sub_kriteria', $sub_kriteria)
+                                                 ->with('mobil', $mobil)
+                                                 ->with('jenis_kriteria', $jenis_kriteria)
+                                                 ->with('opt_alternatifs', $opt_alternatifs)
+                                                 ->with('request', $request);
     }
 
     /**

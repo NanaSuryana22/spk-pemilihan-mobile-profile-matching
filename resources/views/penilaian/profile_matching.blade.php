@@ -7,6 +7,7 @@
 	<div class="row">
 		@include('penilaian.filter')
 		@include('penilaian.desc')
+		@include('penilaian.data_penilaian')
 	</div>
 </div>
 @endsection

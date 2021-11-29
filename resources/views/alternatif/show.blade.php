@@ -43,6 +43,7 @@
 																	@foreach ($opt_alternatif as $i)
 																		<dt class="col-sm-2">{{ $i->kriteria->nama }}</dt>
 																		<dd class="col-sm-10">{{ $i->sub_kriteria->nama }}</dd>
+																		{{-- Untuk menampilkan Bobot Nilai : ( {{ $i->sub_kriteria->nilai }} ) --}}
 																		<div class="col-md-12">
 																			<hr />
 																		</div>

@@ -31,7 +31,7 @@
                   <td class="th-font" data-title="Nilai Selisih">{{ $data->nilai }}</td>
                   <td class="th-font" data-title="Bobot">
                     {{ $data->bobot }}</td>
-                                    <td class="th-font" data-title="Keterangan">
+                  <td class="th-font" data-title="Keterangan">
                     {{ $data->keterangan }}</td>
                   <td class="th-font" data-title="Aksi">
                     <form action="{{ route('selisih.destroy', $data->id) }}" method="post">
