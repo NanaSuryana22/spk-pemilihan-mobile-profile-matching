@@ -34,6 +34,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('alternatif', 'App\Http\Controllers\AlternatifController');
     Route::resource('penilaian', 'App\Http\Controllers\PenilaianController');
     Route::resource('users', 'App\Http\Controllers\UserController');
+    Route::get('profile_matching', 'App\Http\Controllers\PenilaianController@profile_matching')->name('profile_matching');
 }); 
 
 require __DIR__.'/auth.php';
