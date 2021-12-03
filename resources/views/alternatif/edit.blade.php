@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title', "Edit Data Mobil")
-@section('alternatif', 'active')
+@section('listmobil', 'active')
 @section('content')
 <div class="dasboard_graph">
     <div class="clearfix"></div>

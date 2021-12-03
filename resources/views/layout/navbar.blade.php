@@ -1,6 +1,3 @@
-<?php
-$auth = Auth::user()->name;
-?>
 <div class="top_nav">
 	<div class="nav_menu">
 			<div class="nav toggle">
@@ -10,7 +7,13 @@ $auth = Auth::user()->name;
 			<ul class=" navbar-right">
 				<li class="nav-item dropdown open" style="padding-left: 15px;">
 					<a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-						<?= $auth ?>
+						@if(Route::has('login'))
+							@auth
+								<?= Auth::user()->name; ?>
+							@else
+								Pengunjung
+							@endauth
+						@endif
 					</a>
 					<div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item"  href="{{ route('profile.show') }}"> Profile</a>

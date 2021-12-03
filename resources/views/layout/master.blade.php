@@ -44,13 +44,23 @@
 
             <div class="clearfix"></div>
             <!-- sidebar menu -->
-            @include('layout.sidebar')
+            @if (Route::has('login'))
+              @auth
+                @include('layout.sidebar')
+              @else
+                @include('layout.sidebar_visitor')
+              @endauth
+            @endif
             <!-- /sidebar menu -->
           </div>
         </div>
 
         <!-- top navigation -->
-        @include('layout.navbar')
+        @if (Route::has('login'))
+          @auth
+            @include('layout.navbar')
+          @endauth
+        @endif
         <!-- /top navigation -->
 
         <!-- page content -->

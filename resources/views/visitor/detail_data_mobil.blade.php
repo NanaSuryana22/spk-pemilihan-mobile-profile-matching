@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title', "Detail Alternatif")
-@section('listmobil', 'active')
+@section('alternatif', 'active')
 @section('content')
 <div class="dasboard_graph">
 	<div class="clearfix"></div>
@@ -52,21 +52,9 @@
 													</div>
 											</div>
 											<br />
-											<form action="{{ route('alternatif.destroy', $alternatif->id) }}" method="post">
-													<a href="{{ route('alternatif.edit',$alternatif->id) }}"
-														class="pull-left btn btn-warning btn-md btn-jarak-kebawah">
-														<i class="fa fa-pencil" title="Ubah Data"></i>
-													</a>
-													{{ csrf_field() }}
-													{{ method_field('DELETE') }}
-													<button type="submit" class="pull-left btn btn-danger btn-md btn-jarak-button-detail"
-																onclick="return confirm('Yakin ingin menghapus data mobil ini ?')">
-																<i class="fa fa-trash" title="Hapus Data"></i>
-													</button>
-													<a href="{{ route('alternatif.index') }}" class="pull-right btn btn-primary btn-md">
-															<i class="fa fa-mail-reply" title="Kembali"></i>
-													</a>
-											</form>
+											<a href="{{ route('data_mobil') }}" class="pull-right btn btn-primary btn-md">
+												<i class="fa fa-mail-reply" title="Kembali"></i>
+											</a>
 									</div>
 							</div>
 						</div>

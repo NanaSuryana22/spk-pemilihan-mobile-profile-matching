@@ -17,7 +17,19 @@
 					<tbody>
 						@foreach($mobil as $m)
 							<tr>
-								<td class="th-font" data-title="Nama Alternatif"><a href="{{ route('alternatif.show', $m->id) }}" class="btn btn-link btn-sm" target="_blank">{{ $m->nama }}</a></td>
+								<td class="th-font" data-title="Nama Alternatif">
+									@if (Route::has('login'))
+                    @auth
+											<a href="{{ route('alternatif.show', $m->id) }}" class="btn btn-link btn-sm" target="_blank">
+												{{ $m->nama }}
+											</a>
+                    @else
+											<a href="{{ route('detail_data_mobil', $m->id) }}" class="btn btn-link btn-sm" target="_blank">
+												{{ $m->nama }}
+											</a>
+                    @endauth
+            			@endif
+								</td>
 								@foreach ($m->opt_alternatifs->sortBy('kriteria_id') as $k)
 									<?php
 										$id = $k->kriteria_id;

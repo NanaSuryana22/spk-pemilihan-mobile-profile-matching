@@ -11,33 +11,31 @@
     </div>
   </div>
   <div class="col-md-12">
-    <div class="row">
+    <div class="card-group">
       @foreach ($datas as $alternatif)
-        <a href="{{ route('alternatif.show', $alternatif->id) }}" target="_blank">
-          <div class="col-md-55">
-            <div class="thumbnail">
-              <div class="image view view-first">
-                <img style="width: 100%; display: block;" src="{{ $alternatif->image }}" alt="image" />
-                <div class="mask">
-                  <p>{{ $alternatif->nama }}</p>
-                  <div class="tools tools-bottom">
-                    <form action="{{ route('alternatif.destroy', $alternatif->id) }}" method="post">
-                      <a href="{{ route('alternatif.show', $alternatif->id) }}" title="Lihat Detail" class="btn btn-link"><i class="fa fa-link"></i></a>
-                      <a href="{{ route('alternatif.edit', $alternatif->id) }}" title="Edit Data" class="btn btn-link"><i class="fa fa-pencil"></i></a>
-                      {{ csrf_field() }}
-                      {{ method_field('DELETE') }}
-                      <button type="submit" class="btn btn-link" onclick="return confirm('Yakin ingin menghapus data mobil ini ?')"><i class="fa fa-times"></i></button>
-                    </form>
-                  </div>
-                </div>
+        <div class="col-md-3 mt-1">
+          <a href="{{ route('alternatif.show', $alternatif->id) }}">
+            <div class="card">
+              <img src="{{ $alternatif->image }}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h6 class="card-title">{{ substr($alternatif->nama, 0, 24) }}</h6>
+                <p class="card-text">{{ substr($alternatif->desc, 0, 30) }}</p>
+                <p class="card-text"><small class="text-muted">Last updated {{ $alternatif->updated_at }}</small></p>
+                <p>
+                <form action="{{ route('alternatif.destroy', $alternatif->id) }}" method="post">
+                  <a href="{{ route('alternatif.show', $alternatif->id) }}" title="Lihat Detail" class="btn btn-primary btn-sm"><i class="fa fa-link"></i></a>
+                  <a href="{{ route('alternatif.edit', $alternatif->id) }}" title="Edit Data" class="btn btn-secondary btn-sm"><i class="fa fa-pencil"></i></a>
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data mobil ini ?')"><i class="fa fa-times"></i></button>
+                </form>
+                </p>
               </div>
-            <div class="caption">
-              <a href="{{ route('alternatif.show', $alternatif->id) }}"><h2 align="center">{{ $alternatif->nama }}</h2></a>
             </div>
-            </div>
-          </div>
-        </a>
+          </a>
+        </div>
       @endforeach
     </div>
+    {{ $datas->links('vendor/livewire/bootstrap') }}
   </div>
 </div>

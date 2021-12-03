@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\JenisKriteria;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +15,7 @@ use App\Http\Livewire\JenisKriteria;
 */
 
 Route::get('/', function () {
-    return view('visitor_page');
+    return Redirect::route('halaman_utama.index');
 });
 
 Route::get('/dashboard', function () {
@@ -36,5 +36,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('users', 'App\Http\Controllers\UserController');
     Route::get('profile_matching', 'App\Http\Controllers\PenilaianController@profile_matching')->name('profile_matching');
 }); 
+
+Route::resource('halaman_utama', 'App\Http\Controllers\HalamanUtamaController');
+Route::get('data_mobil', 'App\Http\Controllers\VisitorController@data_mobil')->name('data_mobil');
+Route::get('detail_data_mobil/{id}', 'App\Http\Controllers\VisitorController@detail_data_mobil')->name('detail_data_mobil');
+Route::get('datapenilaian', 'App\Http\Controllers\VisitorController@datapenilaian')->name('datapenilaian');
+Route::get('profilematchingvisitor', 'App\Http\Controllers\VisitorController@profilematchingvisitor')->name('profilematchingvisitor');
 
 require __DIR__.'/auth.php';
