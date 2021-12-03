@@ -56,11 +56,7 @@
         </div>
 
         <!-- top navigation -->
-        @if (Route::has('login'))
-          @auth
-            @include('layout.navbar')
-          @endauth
-        @endif
+        @include('layout.navbar')
         <!-- /top navigation -->
 
         <!-- page content -->
