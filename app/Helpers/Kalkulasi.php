@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 
 function get_nilai_sub_kriteria($sub_kriteria_id) {
 	$sub_kriteria = DB::table('sub_kriteria')->where('id', $sub_kriteria_id)->first();
-	return (isset($sub_kriteria->nilai) ? $sub_kriteria->nilai : '');
+	return (isset($sub_kriteria->nilai) ? $sub_kriteria->nilai : 0);
 }
 
 function get_nilai_gap($nilai_filter,$nilai_profile) {

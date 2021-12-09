@@ -19,53 +19,53 @@
                     <div class="card">
                         <div class="card-content">
                             <div class="card-body">
-															<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="{{ route('selisih.update', $selisih->id) }} ">
-																{{ csrf_field() }} {{method_field('PUT')}}
-																<div class="item form-group">
-																	<label class="col-form-label col-md-3 col-sm-3 label-align" for="nilai">Nilai <span class="required">*</span>
-																	</label>
-																	<div class="col-md-6 col-sm-6 ">
-																		<input type="number" required="required" class="form-control @error('nilai') is-invalid @enderror" name="nilai" value="{{ $selisih->nilai }}">
-																		@if($errors->has('nilai'))
-																			<span class="invalid-feedback" role="alert">
-                                      	<strong>{{$errors->first('nilai') }}</strong>
+                              <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="{{ route('selisih.update', $selisih->id) }} ">
+                                {{ csrf_field() }} {{method_field('PUT')}}
+                                <div class="item form-group">
+                                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="nilai">Nilai <span class="required">*</span>
+                                  </label>
+                                  <div class="col-md-6 col-sm-6 ">
+                                    <input type="number" required="required" class="form-control @error('nilai') is-invalid @enderror" name="nilai" value="{{ $selisih->nilai }}">
+                                    @if($errors->has('nilai'))
+                                      <span class="invalid-feedback" role="alert">
+                                        <strong>{{$errors->first('nilai') }}</strong>
                                       </span>
                                     @endif
-																	</div>
-																</div>
-																<div class="item form-group">
-																	<label class="col-form-label col-md-3 col-sm-3 label-align" for="bobot">Bobot <span class="required">*</span>
-																	</label>
-																	<div class="col-md-6 col-sm-6 ">
-																		<input type="number" id="bobot" required step="0.01" class="form-control @error('bobot') is-invalid @enderror" name="bobot" value="{{ $selisih->bobot }}">
-																		@if($errors->has('bobot'))
-																			<span class="invalid-feedback" role="alert">
-                                      	<strong>{{$errors->first('bobot') }}</strong>
+                                  </div>
+                                </div>
+                                <div class="item form-group">
+                                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="bobot">Bobot <span class="required">*</span>
+                                  </label>
+                                  <div class="col-md-6 col-sm-6 ">
+                                    <input type="number" id="bobot" required step="0.01" class="form-control @error('bobot') is-invalid @enderror" name="bobot" value="{{ $selisih->bobot }}">
+                                    @if($errors->has('bobot'))
+                                      <span class="invalid-feedback" role="alert">
+                                        <strong>{{$errors->first('bobot') }}</strong>
                                       </span>
                                     @endif
-																	</div>
-																</div>
-																<div class="item form-group">
-																	<label class="col-form-label col-md-3 col-sm-3 label-align" for="keterangan">Keterangan <span class="required">*</span>
-																	</label>
-																	<div class="col-md-6 col-sm-6 ">
-																		<textarea name="keterangan" id="keterangan" cols="30" rows="10" class="form-control">{{ $selisih->keterangan }}</textarea>
-																		@if($errors->has('keterangan'))
-																			<span class="invalid-feedback" role="alert">
-                                      	<strong>{{$errors->first('keterangan') }}</strong>
+                                  </div>
+                                </div>
+                                <div class="item form-group">
+                                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="keterangan">Keterangan <span class="required">*</span>
+                                  </label>
+                                  <div class="col-md-6 col-sm-6 ">
+                                    <textarea name="keterangan" id="keterangan" cols="30" rows="10" class="form-control">{{ $selisih->keterangan }}</textarea>
+                                    @if($errors->has('keterangan'))
+                                      <span class="invalid-feedback" role="alert">
+                                        <strong>{{$errors->first('keterangan') }}</strong>
                                       </span>
                                     @endif
-																	</div>
-																</div>
-																<div class="ln_solid"></div>
-																<div class="item form-group">
-																	<div class="col-md-6 col-sm-6 offset-md-3">
-																		<a class="btn btn-primary" type="button" href="{{ route('kriteria_types.index') }}">Cancel</a>
-																		<button class="btn btn-primary" type="reset">Reset</button>
-																		<button type="submit" class="btn btn-success">Submit</button>
-																	</div>
-																</div>
-															</form>
+                                  </div>
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div class="item form-group">
+                                  <div class="col-md-6 col-sm-6 offset-md-3">
+                                    <a class="btn btn-primary" type="button" href="{{ route('selisih.index') }}">Cancel</a>
+                                    <button class="btn btn-primary" type="reset">Reset</button>
+                                    <button type="submit" class="btn btn-success">Save Changes</button>
+                                  </div>
+                                </div>
+                              </form>
                             </div>
                         </div>
                     </div>

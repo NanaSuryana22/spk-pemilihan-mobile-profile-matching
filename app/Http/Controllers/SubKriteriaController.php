@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\SubKriteria;
 use App\Models\Kriteria;
 use Illuminate\Http\Request;
-use Session;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\SubKriteriaRequest;
 
 class SubKriteriaController extends Controller
@@ -17,7 +17,7 @@ class SubKriteriaController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -109,8 +109,17 @@ class SubKriteriaController extends Controller
      */
     public function destroy($id)
     {
+        $sub_kriteria = SubKriteria::find($id);
+        $count_sub_kriteria_on_opt_alterantif = $sub_kriteria->opt_alternatifs()->count();
+        if ($count_sub_kriteria_on_opt_alterantif >= 1) {
+            Session::flash("error", "Sub Kriteria terpilih memiliki data sub mobil (alternatif), data gagal dihapus !");
+            return redirect()->route("sub_kriteria.index");
+        } else {
+            $sub_kriteria->opt_alternatifs()->delete();
+            $sub_kriteria->delete();
+            Session::flash("notice", "Kriteria terpilih berhasil dihapus");
+            return redirect()->route("kriteria.index");
+        }
         SubKriteria::destroy($id);
-        Session::flash("notice", "Sub Kriteria terpilih berhasil dihapus");
-        return redirect()->route("sub_kriteria.index");
     }
 }
