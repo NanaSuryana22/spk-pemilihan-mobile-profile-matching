@@ -7,8 +7,11 @@ use App\Models\JenisKriteria;
 use Illuminate\Http\Request;
 use App\Http\Requests\KriteriaRequest;
 use App\Http\Requests\SubKriteriaRequest;
+use App\Models\Alternatif;
+use App\Models\OptAlternatif;
 use App\Models\SubKriteria;
-use Session;
+use Mockery\Matcher\Subset;
+use Illuminate\Support\Facades\Session;
 
 class KriteriaController extends Controller
 {
@@ -19,7 +22,7 @@ class KriteriaController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -53,6 +56,21 @@ class KriteriaController extends Controller
         $data->nama = $request->nama;
         $data->jenis_kriteria_id = $request->jenis_kriteria_id;
         $data->save();
+
+        $sub_kriteria = new SubKriteria();
+        $sub_kriteria->kriteria_id = $data->id;
+        $sub_kriteria->nama = $request->nama_sub_kriteria;
+        $sub_kriteria->nilai = $request->nilai;
+        $sub_kriteria->save();
+
+        $data_mobil = Alternatif::all();
+        foreach($data_mobil as $d) {
+            $opt_alternatif = new OptAlternatif();
+            $opt_alternatif->alternatif_id = $d->id;
+            $opt_alternatif->kriteria_id = $data->id;
+            $opt_alternatif->sub_kriteria_id = $sub_kriteria->id;
+            $opt_alternatif->save();
+        }
 
         Session::flash("notice", "Kriteria $data->nama Berhasil Dibuat.");
         return redirect()->route("kriteria.show", $data);
@@ -111,11 +129,12 @@ class KriteriaController extends Controller
     public function destroy($id)
     {
         $kriteria = Kriteria::find($id);
-        $count_sub_kriteria = $kriteria->sub_kriterias()->count();
+        $count_sub_kriteria = $kriteria->opt_alternatifs()->count();
         if ($count_sub_kriteria >= 1) {
-            Session::flash("error", "Kriteria terpilih memiliki data sub kriteria, data gagal dihapus !");
+            Session::flash("error", "Kriteria terpilih memiliki data sub mobil (alternatif), data gagal dihapus !");
             return redirect()->route("kriteria.show", $kriteria);
         } else {
+            $kriteria->opt_alternatifs()->delete();
             $kriteria->sub_kriterias()->delete();
             $kriteria->delete();
             Session::flash("notice", "Kriteria terpilih berhasil dihapus");
@@ -139,14 +158,19 @@ class KriteriaController extends Controller
     {
       $subkriteria = SubKriteria::find($id);
       $kriteria = Kriteria::find($subkriteria->kriteria_id);
+      $count_sub_kriteria_on_opt_alterantif = $subkriteria->opt_alternatifs()->count();
+      if($count_sub_kriteria_on_opt_alterantif >=1) {
+        $subkriteria->opt_alternatifs()->delete();
+      }
       $subkriteria->delete();
+
       Session::flash("notice", "Sub Kriteria terpilih berhasil dihapus");
       return redirect()->route("kriteria.show", $kriteria);
     }
 
     public function editsubkriteria($id)
     {
-        $sub_kriteria = SubKriteria::find($id);   
+        $sub_kriteria = SubKriteria::find($id);
         $kriteria    = $sub_kriteria->kriteria;
         return view('kriteria.edit_subkriteria')->with('sub_kriteria', $sub_kriteria)->with('kriteria', $kriteria);
     }

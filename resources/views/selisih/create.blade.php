@@ -60,7 +60,7 @@
 																<div class="ln_solid"></div>
 																<div class="item form-group">
 																	<div class="col-md-6 col-sm-6 offset-md-3">
-																		<a class="btn btn-primary" type="button" href="{{ route('kriteria_types.index') }}">Cancel</a>
+																		<a class="btn btn-primary" type="button" href="{{ route('selisih.index') }}">Cancel</a>
 																		<button class="btn btn-primary" type="reset">Reset</button>
 																		<button type="submit" class="btn btn-success">Submit</button>
 																	</div>

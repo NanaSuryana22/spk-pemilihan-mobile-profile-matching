@@ -13,7 +13,7 @@
   <div class="col-md-12">
     <div class="card-group">
       @foreach ($datas as $alternatif)
-        <div class="col-md-3 mt-1">
+        <div class="col-md-3">
           <a href="{{ route('alternatif.show', $alternatif->id) }}">
             <div class="card">
               <img src="{{ $alternatif->image }}" class="card-img-top" alt="...">

@@ -19,46 +19,46 @@
                     <div class="card">
                         <div class="card-content">
                             <div class="card-body">
-															<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="{{ route('kriteria.update', $kriteria->id) }} ">
-																{{ csrf_field() }} {{method_field('PUT')}}
-																<div class="item form-group">
-																	<label class="col-form-label col-md-3 col-sm-3 label-align" for="nama">Nama Kriteria<span class="required">*</span>
-																	</label>
-																	<div class="col-md-6 col-sm-6 ">
-																		<input type="text" required="required" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ $kriteria->nama }}">
-																		@if($errors->has('nama'))
-																			<span class="invalid-feedback" role="alert">
-                                      	<strong>{{$errors->first('nama') }}</strong>
+                              <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" method="POST" action="{{ route('kriteria.update', $kriteria->id) }} ">
+                                {{ csrf_field() }} {{method_field('PUT')}}
+                                <div class="item form-group">
+                                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="nama">Nama Kriteria<span class="required">*</span>
+                                  </label>
+                                  <div class="col-md-6 col-sm-6 ">
+                                    <input type="text" required="required" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ $kriteria->nama }}">
+                                    @if($errors->has('nama'))
+                                      <span class="invalid-feedback" role="alert">
+                                        <strong>{{$errors->first('nama') }}</strong>
                                       </span>
                                     @endif
-																	</div>
-																</div>
-																<div class="item form-group">
-																	<label class="col-form-label col-md-3 col-sm-3 label-align" for="Jenis Kriteria">Jenis Kriteria <span class="required">*</span>
-																	</label>
-																	<div class="col-md-6 col-sm-6 ">
-																		<select name="jenis_kriteria_id" id="jenis_kriteria_id" class="form-control">
-																			<option value="{{ $kriteria->id }}">Pilih...</option>
-																			@foreach ($jenis_kriteria as $k)
-																				<option value="{{ $k->id}}" {{ ( $k->id == "$kriteria->jenis_kriteria_id") ? 'selected' : '' }}>{{ $k->nama }}</option>
-																			@endforeach
-																		</select>
-																		@if($errors->has('jenis_kriteria_id'))
-																			<span class="invalid-feedback" role="alert">
-                                      	<strong>{{$errors->first('jenis_kriteria_id') }}</strong>
+                                  </div>
+                                </div>
+                                <div class="item form-group">
+                                  <label class="col-form-label col-md-3 col-sm-3 label-align" for="Jenis Kriteria">Jenis Kriteria <span class="required">*</span>
+                                  </label>
+                                  <div class="col-md-6 col-sm-6 ">
+                                    <select name="jenis_kriteria_id" id="jenis_kriteria_id" class="form-control">
+                                      <option value="{{ $kriteria->id }}">Pilih...</option>
+                                      @foreach ($jenis_kriteria as $k)
+                                        <option value="{{ $k->id}}" {{ ( $k->id == "$kriteria->jenis_kriteria_id") ? 'selected' : '' }}>{{ $k->nama }}</option>
+                                      @endforeach
+                                    </select>
+                                    @if($errors->has('jenis_kriteria_id'))
+                                      <span class="invalid-feedback" role="alert">
+                                        <strong>{{$errors->first('jenis_kriteria_id') }}</strong>
                                       </span>
                                     @endif
-																	</div>
-																</div>
-																<div class="ln_solid"></div>
-																<div class="item form-group">
-																	<div class="col-md-6 col-sm-6 offset-md-3">
-																		<a class="btn btn-primary" type="button" href="{{ route('kriteria_types.index') }}">Cancel</a>
-																		<button class="btn btn-primary" type="reset">Reset</button>
-																		<button type="submit" class="btn btn-success">Submit</button>
-																	</div>
-																</div>
-															</form>
+                                  </div>
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div class="item form-group">
+                                  <div class="col-md-6 col-sm-6 offset-md-3">
+                                    <a class="btn btn-primary" type="button" href="{{ route('kriteria.index') }}">Cancel</a>
+                                    <button class="btn btn-primary" type="reset">Reset</button>
+                                    <button type="submit" class="btn btn-success">Save Changes</button>
+                                  </div>
+                                </div>
+                              </form>
                             </div>
                         </div>
                     </div>
