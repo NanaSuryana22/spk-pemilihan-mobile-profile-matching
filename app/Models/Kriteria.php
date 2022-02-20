@@ -11,7 +11,8 @@ class Kriteria extends Model
 
     protected $fillable = [ 
         'jenis_kriteria_id', 
-        'nama'
+        'nama',
+        'user_id'
     ];
 
     protected $table = 'kriteria';
@@ -29,6 +30,11 @@ class Kriteria extends Model
     public function opt_alternatifs()
     {
         return $this->hasMany('App\Models\OptAlternatif', 'kriteria_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 
     public function scopeSearch($query, $term) {

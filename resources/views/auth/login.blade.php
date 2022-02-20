@@ -26,12 +26,16 @@
 
           <div class="separator">
 
+            <p class="change_link">Belum Punya Akun?
+              <a href="{{ route('register') }}" class="to_register"> Buat Akun </a>
+            </p>
+
             <div class="clearfix"></div>
             <br />
 
             <div>
               <h1><i class="fa fa-car"></i> SPK Pemilihan Mobil</h1>
-              <p>©2021 All Rights Reserved. Develop By <a href="#">Arif Irawan</a></p>
+              <p>©2022 All Rights Reserved. Develop By <a href="#">Arif Irawan</a></p>
             </div>
           </div>
         </form>
@@ -63,7 +67,7 @@
 
           <div class="separator">
             <p class="change_link">Sudah memiliki akun ?
-              <a href="#signin" class="to_register"> Log in </a>
+              <a href="{{ route('login') }}"> Log in </a>
             </p>
 
             <div class="clearfix"></div>
@@ -71,7 +75,7 @@
 
             <div>
               <h1><i class="fa fa-car"></i> SPK Pemilihan Mobil</h1>
-              <p>©2021 All Rights Reserved. Develop By <a href="#">Arif Irawan</a></p>
+              <p>©2022 All Rights Reserved. Develop By <a href="#">Arif Irawan</a></p>
             </div>
           </div>
         </form>

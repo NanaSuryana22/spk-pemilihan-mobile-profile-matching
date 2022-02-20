@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\JenisKriteria;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\JenisKriteriaRequest;
 use Session;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 class JenisKriteriaController extends Controller
 {
     /**
@@ -45,9 +46,12 @@ class JenisKriteriaController extends Controller
      */
     public function store(JenisKriteriaRequest $request)
     {
+        $user_id = Auth::user()->id;
+
         $data = new JenisKriteria();
         $data->nama = $request->nama;
         $data->nilai = $request->nilai;
+        $data->user_id = $user_id;
         $data->save();
 
         Session::flash("notice", "Jenis Kriteria Baru Berhasil Dibuat.");
@@ -86,9 +90,12 @@ class JenisKriteriaController extends Controller
      */
     public function update(JenisKriteriaRequest $request, $id)
     {
+        $user_id = Auth::user()->id;
+
         $data = JenisKriteria::find($id);
         $data->nama = $request->nama;
         $data->nilai = $request->nilai;
+        $data->user_id = $user_id;
         $data->save();
 
         Session::flash("notice", "Jenis Kriteria $data->nama Berhasil Diupdate");

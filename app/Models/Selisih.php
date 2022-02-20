@@ -9,7 +9,12 @@ class Selisih extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nilai', 'bobot', 'keterangan'];
+    protected $fillable = ['nilai', 'bobot', 'keterangan', 'user_id'];
 
     protected $table = 'selisih';
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
 }

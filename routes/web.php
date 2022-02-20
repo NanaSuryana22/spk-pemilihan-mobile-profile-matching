@@ -24,6 +24,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('kriteria_types', 'App\Http\Controllers\JenisKriteriaController');
+    Route::get('/kriteria_types/cari','App\Http\Controllers\JenisKriteriaController@cari')->name('pencarian_jenis_kriteria');
     Route::resource('selisih', 'App\Http\Controllers\SelisihController');
     Route::resource('kriteria', 'App\Http\Controllers\KriteriaController');
     Route::resource('sub_kriteria', 'App\Http\Controllers\SubKriteriaController');

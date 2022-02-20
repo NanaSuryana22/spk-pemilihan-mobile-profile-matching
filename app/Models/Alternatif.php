@@ -9,12 +9,17 @@ class Alternatif extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama', 'image', 'desc'];
+    protected $fillable = ['nama', 'image', 'desc', 'user_id'];
 
     protected $table = 'alternatif';
 
     public function opt_alternatifs()
     {
         return $this->hasMany('App\Models\OptAlternatif', 'alternatif_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 }

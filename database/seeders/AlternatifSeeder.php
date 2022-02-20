@@ -7,6 +7,7 @@ use App\Models\Alternatif;
 use App\Models\OptAlternatif;
 use App\Models\Kriteria;
 use App\Models\SubKriteria;
+use App\Models\User;
 
 class AlternatifSeeder extends Seeder
 {
@@ -17,10 +18,13 @@ class AlternatifSeeder extends Seeder
      */
     public function run()
     {
+        $user_id = User::first()->id;
+
         $data_1 = new Alternatif();
         $data_1->nama = 'Hilux D Cab 2.4 V (4x4) DSL A/T';
         $data_1->image = 'img/Hilux_D_Cab.png';
         $data_1->desc = 'Hilux D Cab 2.4 V (4x4) DSL A/T adalah merk atau seri mobil dari merk toyota dengan kategori pickup dan jenis transmisi otomatis menggunakan bahan bakar solar';
+        $data_1->user_id = $user_id;
         $data_1->save();
 
         $kriterias = Kriteria::all();
@@ -48,6 +52,7 @@ class AlternatifSeeder extends Seeder
         $data_2->nama = 'TritonULTIMATE AT Double Cab 4WD';
         $data_2->image = 'img/triton.jpg';
         $data_2->desc = 'TritonULTIMATE AT Double Cab 4WD adalah merk atau seri mobil dari merk daihatsu dengan kategori pickup dan jenis transmisi otomatis menggunakan bahan bakar bensin';
+        $data_2->user_id = $user_id;
         $data_2->save();
 
         $kriterias = Kriteria::all();
@@ -75,6 +80,7 @@ class AlternatifSeeder extends Seeder
         $data_3->nama = 'Gran Max PU1.3 3W FH';
         $data_3->image = 'img/grand-max.jpg';
         $data_3->desc = 'Gran Max PU1.3 3W FH adalah merk atau seri mobil dari merk Honda dengan kategori pickup dan jenis transmisi manual menggunakan bahan bakar bensin';
+        $data_3->user_id = $user_id;
         $data_3->save();
 
         $kriterias = Kriteria::all();
@@ -102,6 +108,7 @@ class AlternatifSeeder extends Seeder
         $data_4->nama = 'Carry Wide-Deck AC/PS';
         $data_4->image = 'img/carry.jpg';
         $data_4->desc = 'Carry Wide-Deck AC/PS adalah merk atau seri mobil dari merk Mitsubishi dengan kategori pickup dan jenis transmisi manual menggunakan bahan bakar bensin';
+        $data_4->user_id = $user_id;
         $data_4->save();
 
         $kriterias = Kriteria::all();

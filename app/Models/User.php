@@ -58,4 +58,29 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function jenis_kriterias()
+    {
+        return $this->hasMany('App\Models\JenisKriteria', 'user_id');
+    }
+
+    public function selisihs()
+    {
+        return $this->hasMany('App\Models\Selisih', 'user_id');
+    }
+
+    public function kriterias()
+    {
+        return $this->hasMany('App\Models\Kriteria', 'user_id');
+    }
+
+    public function sub_kriterias()
+    {
+        return $this->hasMany('App\Models\SubKriteria', 'user_id');
+    }
+
+    public function alternatifs()
+    {
+        return $this->hasMany('App\Models\Alternatif', 'user_id');
+    }
 }

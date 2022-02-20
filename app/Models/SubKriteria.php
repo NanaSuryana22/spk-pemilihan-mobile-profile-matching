@@ -10,7 +10,7 @@ class SubKriteria extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama', 'kriteria_id', 'nilai'
+        'nama', 'kriteria_id', 'nilai', 'user_id'
     ];
 
     protected $table = 'sub_kriteria';
@@ -23,6 +23,11 @@ class SubKriteria extends Model
     public function opt_alternatifs()
     {
         return $this->hasMany('App\Models\OptAlternatif', 'sub_kriteria_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 
     public function scopeSearch($query, $term) {
