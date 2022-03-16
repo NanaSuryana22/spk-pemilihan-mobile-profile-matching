@@ -21,10 +21,10 @@ class UserSeeder extends Seeder
         $data->password = Hash::make('arifirawan');
         $data->save();
 
-        $data = new User();
-        $data->name = 'Nana Suryana';
-        $data->email = 'nanasuryana@gmail.com';
-        $data->password = Hash::make('nanasuryana');
-        $data->save();
+        // $data = new User();
+        // $data->name = 'Nana Suryana';
+        // $data->email = 'nanasuryana@gmail.com';
+        // $data->password = Hash::make('nanasuryana');
+        // $data->save();
     }
 }

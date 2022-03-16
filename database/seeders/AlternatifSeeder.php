@@ -8,6 +8,7 @@ use App\Models\OptAlternatif;
 use App\Models\Kriteria;
 use App\Models\SubKriteria;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class AlternatifSeeder extends Seeder
 {
@@ -18,6 +19,12 @@ class AlternatifSeeder extends Seeder
      */
     public function run()
     {
+        $jml_alternatif = Alternatif::count();
+        if($jml_alternatif >= 1) {
+            DB::table('alternatif')->delete();
+            DB::table('opt_alternatifs')->delete();
+        }
+
         $user_id = User::first()->id;
 
         $data_1 = new Alternatif();
@@ -30,21 +37,23 @@ class AlternatifSeeder extends Seeder
         $kriterias = Kriteria::all();
         foreach($kriterias as $k) {
             if($k->nama == 'Merk Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Toyota')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Toyota')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Kategori Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Harga') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 300 Juta')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 300 Juta')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis Transmisi') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Otomatis')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Otomatis')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis BBM') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Solar')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Solar')->where('user_id', $user_id)->first()->id;
             }
 
             $child_data = new OptAlternatif();
             $child_data->alternatif_id = $data_1->id;
             $child_data->kriteria_id = $k->id;
             $child_data->sub_kriteria_id = $sub_kriteria_id;
+            $child_data->user_id = $user_id;
+            $child_data->user_id = $user_id;
             $child_data->save();
         }
 
@@ -58,21 +67,22 @@ class AlternatifSeeder extends Seeder
         $kriterias = Kriteria::all();
         foreach($kriterias as $k) {
             if($k->nama == 'Merk Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Daihatsu')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Daihatsu')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Kategori Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Harga') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 300 Juta')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 300 Juta')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis Transmisi') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Otomatis')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Otomatis')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis BBM') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Bensin')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Bensin')->where('user_id', $user_id)->first()->id;
             }
 
             $child_data = new OptAlternatif();
             $child_data->alternatif_id = $data_2->id;
             $child_data->kriteria_id = $k->id;
             $child_data->sub_kriteria_id = $sub_kriteria_id;
+            $child_data->user_id = $user_id;
             $child_data->save();
         }
 
@@ -86,21 +96,22 @@ class AlternatifSeeder extends Seeder
         $kriterias = Kriteria::all();
         foreach($kriterias as $k) {
             if($k->nama == 'Merk Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Honda')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Honda')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Kategori Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Harga') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 140 Juta')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 140 Juta')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis Transmisi') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Manual')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Manual')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis BBM') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Bensin')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Bensin')->where('user_id', $user_id)->first()->id;
             }
 
             $child_data = new OptAlternatif();
             $child_data->alternatif_id = $data_3->id;
             $child_data->kriteria_id = $k->id;
             $child_data->sub_kriteria_id = $sub_kriteria_id;
+            $child_data->user_id = $user_id;
             $child_data->save();
         }
 
@@ -114,21 +125,22 @@ class AlternatifSeeder extends Seeder
         $kriterias = Kriteria::all();
         foreach($kriterias as $k) {
             if($k->nama == 'Merk Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Mitsubishi')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Mitsubishi')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Kategori Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Harga') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 150 Juta')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 150 Juta')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis Transmisi') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Manual')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Manual')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis BBM') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Bensin')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Bensin')->where('user_id', $user_id)->first()->id;
             }
 
             $child_data = new OptAlternatif();
             $child_data->alternatif_id = $data_4->id;
             $child_data->kriteria_id = $k->id;
             $child_data->sub_kriteria_id = $sub_kriteria_id;
+            $child_data->user_id = $user_id;
             $child_data->save();
         }
     }

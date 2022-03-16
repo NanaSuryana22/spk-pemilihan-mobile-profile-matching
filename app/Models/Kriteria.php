@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Kriteria extends Model
 {
@@ -41,7 +42,9 @@ class Kriteria extends Model
         $term = "%$term%";
         $query->where(function($query) use ($term) {
             $query->where('jenis_kriteria_id', 'like', '%' .$term. '%')
-                  ->orWhere('nama','like', '%' .$term. '%');
+                  ->where('user_id', Auth::user()->id)
+                  ->orWhere('nama','like', '%' .$term. '%')
+                  ->where('user_id', Auth::user()->id);
         });
     }
 }

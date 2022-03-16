@@ -2,9 +2,10 @@
 
 use App\Models\JenisKriteria;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 function get_nilai_sub_kriteria($sub_kriteria_id) {
-	$sub_kriteria = DB::table('sub_kriteria')->where('id', $sub_kriteria_id)->first();
+	$sub_kriteria = DB::table('sub_kriteria')->where('id', $sub_kriteria_id)->where('user_id', Auth::user()->id)->first();
 	return (isset($sub_kriteria->nilai) ? $sub_kriteria->nilai : 0);
 }
 
