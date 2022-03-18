@@ -53,7 +53,6 @@ class AlternatifSeeder extends Seeder
             $child_data->kriteria_id = $k->id;
             $child_data->sub_kriteria_id = $sub_kriteria_id;
             $child_data->user_id = $user_id;
-            $child_data->user_id = $user_id;
             $child_data->save();
         }
 

@@ -16,7 +16,10 @@ class UpdateKriteriaSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('kriteria')->delete();   
+        $count_data = Kriteria::count();
+        if($count_data >= 1) {
+            DB::table('kriteria')->delete();
+        }
         $users = User::all();
         foreach($users as $u) {
             if(isset($u->kriterias)) {

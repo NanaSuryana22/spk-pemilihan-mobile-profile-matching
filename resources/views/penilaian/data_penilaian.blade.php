@@ -23,9 +23,9 @@
                                     'penilaian.data_result.profile_alternatif'
                                 )
                                 {{-- DATA GAP --}}
-                                {{-- @include('penilaian.data_result.gap') --}}
+                                @include('penilaian.data_result.gap')
                                 {{-- DATA NILAI GAP --}}
-                                {{-- @include('penilaian.data_result.nilai_akhir') --}}
+                                @include('penilaian.data_result.nilai_akhir')
                             </div>
                         </div>
                     </div>

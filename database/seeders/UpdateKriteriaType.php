@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\JenisKriteria;
-
+use Illuminate\Support\Facades\DB;
 class UpdateKriteriaType extends Seeder
 {
     /**
@@ -15,6 +15,10 @@ class UpdateKriteriaType extends Seeder
      */
     public function run()
     {
+        $count_data = JenisKriteria::count();
+        if($count_data >= 1) {
+            DB::table('jenis_kriterias')->delete();
+        }
         $users = User::all();
         foreach($users as $u) {
             if(isset($u->jenis_kriterias)) {

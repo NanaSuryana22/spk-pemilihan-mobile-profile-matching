@@ -16,7 +16,10 @@ class UpdateSelisihSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('selisih')->delete();   
+        $count_data = Selisih::count();
+        if($count_data >= 1) {
+            DB::table('selisih')->delete();
+        }
         $users = User::all();
         foreach($users as $u) {
             if(isset($u->selisihs)) {

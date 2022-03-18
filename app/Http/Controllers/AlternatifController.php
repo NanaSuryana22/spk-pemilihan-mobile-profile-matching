@@ -38,8 +38,8 @@ class AlternatifController extends Controller
      */
     public function create()
     {
-        $kriteria = Kriteria::orderBy('jenis_kriteria_id', 'asc')->get();
-        $subkriteria = SubKriteria::orderBy('kriteria_id', 'asc')->get();
+        $kriteria = Kriteria::orderBy('jenis_kriteria_id', 'asc')->where('user_id', Auth::user()->id)->get();
+        $subkriteria = SubKriteria::orderBy('kriteria_id', 'asc')->where('user_id', Auth::user()->id)->get();
         return view('alternatif.create')->with('kriteria', $kriteria)->with('subkriteria', $subkriteria);
     }
 
@@ -75,6 +75,7 @@ class AlternatifController extends Controller
             $opt_alternatif->kriteria_id = $n->id;
             $id = $n->id;
             $opt_alternatif->sub_kriteria_id = $request->$id;
+            $opt_alternatif->user_id = $user_id;
             $opt_alternatif->save();
         }
 
@@ -151,6 +152,7 @@ class AlternatifController extends Controller
             $opt_alternatif->kriteria_id = $n->id;
             $id = $n->id;
             $opt_alternatif->sub_kriteria_id = $request->$id;
+            $opt_alternatif->user_id = $user_id;
             $opt_alternatif->save();
           }
         }
