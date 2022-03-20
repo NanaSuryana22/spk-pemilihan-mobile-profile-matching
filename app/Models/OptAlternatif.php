@@ -29,4 +29,9 @@ class OptAlternatif extends Model
     {
         return $this->belongsTo('App\Models\SubKriteria', 'sub_kriteria_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
 }

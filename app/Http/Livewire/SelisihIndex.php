@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Selisih;
+use Illuminate\Support\Facades\Auth;
 
 class SelisihIndex extends Component
 {
@@ -14,10 +15,15 @@ class SelisihIndex extends Component
 
     public function render()
     {
-        return view('livewire.selisih-index', ['datas' => Selisih::where('bobot','like', '%' . $this->search . '%')
-                                                                  ->orWhere('nilai','like', '%' . $this->search . '%')
-                                                                  ->orWhere('keterangan','like', '%' . $this->search . '%')
-                                                                  ->orderBy('created_at', 'desc')->paginate(15)
-                                              ]);
+        $datas   = Selisih::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(15);
+        $user_id = Auth::user()->id;
+
+        if($this->search !== null) {
+          $datas = Selisih::where('nilai','like', '%' . $this->search . '%')->where('user_id', $user_id)
+                            ->orWhere('bobot','like', '%' . $this->search . '%')->where('user_id', $user_id)
+                            ->orWhere('keterangan','like', '%' . $this->search . '%')->where('user_id', $user_id)
+                            ->orderBy('created_at', 'desc')->paginate(15);
+        }
+        return view('livewire.selisih-index', ['datas' => $datas]);
     }
 }

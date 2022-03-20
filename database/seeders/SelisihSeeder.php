@@ -67,6 +67,5 @@ class SelisihSeeder extends Seeder
         $data->nilai = -4;
         $data->keterangan = 'Kompetensi individu kekurangan 4 tingkat';
         $data->save();
-
     }
 }

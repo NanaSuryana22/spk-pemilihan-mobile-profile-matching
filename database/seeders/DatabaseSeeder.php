@@ -15,10 +15,14 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call(UserSeeder::class);
-        $this->call(JenisKriteriaSeeder::class);
-        $this->call(SelisihSeeder::class);
-        $this->call(KriteriaSeeder::class);
-        $this->call(SubKriteriaSeeder::class);
+        // $this->call(JenisKriteriaSeeder::class);
+        // $this->call(SelisihSeeder::class);
+        // $this->call(KriteriaSeeder::class);
+        // $this->call(SubKriteriaSeeder::class);
+        $this->call(UpdateKriteriaType::class);
+        $this->call(UpdateSelisihSeeder::class);
+        $this->call(UpdateKriteriaSeeder::class);
+        $this->call(UpdateSubKriteriaSeeder::class);
         $this->call(AlternatifSeeder::class);
     }
 }

@@ -9,6 +9,7 @@ use App\Models\Kriteria;
 use App\Models\SubKriteria;
 use Session;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class AlternatifController extends Controller
 {
@@ -37,8 +38,8 @@ class AlternatifController extends Controller
      */
     public function create()
     {
-        $kriteria = Kriteria::orderBy('jenis_kriteria_id', 'asc')->get();
-        $subkriteria = SubKriteria::orderBy('kriteria_id', 'asc')->get();
+        $kriteria = Kriteria::orderBy('jenis_kriteria_id', 'asc')->where('user_id', Auth::user()->id)->get();
+        $subkriteria = SubKriteria::orderBy('kriteria_id', 'asc')->where('user_id', Auth::user()->id)->get();
         return view('alternatif.create')->with('kriteria', $kriteria)->with('subkriteria', $subkriteria);
     }
 
@@ -50,6 +51,8 @@ class AlternatifController extends Controller
      */
     public function store(AlternatifRequest $request)
     {
+        $user_id = Auth::user()->id;
+
         $data = new Alternatif();
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -62,6 +65,7 @@ class AlternatifController extends Controller
         }
         $data->nama = $request->nama;
         $data->desc = $request->desc;
+        $data->user_id = $user_id;
         $data->save();
 
         $kriteria = Kriteria::orderBy('nama', 'asc')->get();
@@ -71,6 +75,7 @@ class AlternatifController extends Controller
             $opt_alternatif->kriteria_id = $n->id;
             $id = $n->id;
             $opt_alternatif->sub_kriteria_id = $request->$id;
+            $opt_alternatif->user_id = $user_id;
             $opt_alternatif->save();
         }
 
@@ -114,6 +119,8 @@ class AlternatifController extends Controller
      */
     public function update(AlternatifRequest $request, $id)
     {
+        $user_id = Auth::user()->id;
+
         $data = Alternatif::find($id);
         if (empty($request->file('image'))) {
             $image_n = $data->image;
@@ -128,6 +135,7 @@ class AlternatifController extends Controller
         $data->image = $image_n;
         $data->nama = $request->nama;
         $data->desc = $request->desc;
+        $data->user_id = $user_id;
         $data->save();
 
         $kriteria = Kriteria::orderBy('nama', 'asc')->get();
@@ -144,6 +152,7 @@ class AlternatifController extends Controller
             $opt_alternatif->kriteria_id = $n->id;
             $id = $n->id;
             $opt_alternatif->sub_kriteria_id = $request->$id;
+            $opt_alternatif->user_id = $user_id;
             $opt_alternatif->save();
           }
         }

@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\JenisKriteria;
+use Illuminate\Support\Facades\Auth;
 
 class JenisKriteriaIndex extends Component
 {
@@ -14,9 +15,16 @@ class JenisKriteriaIndex extends Component
 
     public function render()
     {
-        return view('livewire.jenis-kriteria-index', ['datas' => JenisKriteria::where('nama','like', '%' . $this->search . '%')
-                                                                  ->orWhere('nilai','like', '%' . $this->search . '%')
-                                                                  ->orderBy('created_at', 'desc')->paginate(15)
-                                                     ]);
+        $datas = JenisKriteria::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(15);
+
+        if($this->search !== null) {
+            $datas = JenisKriteria::where('nama','like', '%' . $this->search . '%')
+                                    ->where('user_id', Auth::user()->id)
+                                    ->orWhere('nilai','like', '%' . $this->search . '%')
+                                    ->where('user_id', Auth::user()->id)
+                    ->orderBy('created_at', 'desc')->paginate(15);
+        }
+
+        return view('livewire.jenis-kriteria-index', ['datas' => $datas]);
     }
 }

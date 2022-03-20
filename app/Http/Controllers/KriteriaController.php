@@ -12,6 +12,7 @@ use App\Models\OptAlternatif;
 use App\Models\SubKriteria;
 use Mockery\Matcher\Subset;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class KriteriaController extends Controller
 {
@@ -52,15 +53,19 @@ class KriteriaController extends Controller
      */
     public function store(KriteriaRequest $request)
     {
+        $user_id = Auth::user()->id;
+
         $data = new Kriteria();
         $data->nama = $request->nama;
         $data->jenis_kriteria_id = $request->jenis_kriteria_id;
+        $data->user_id = $user_id;
         $data->save();
 
         $sub_kriteria = new SubKriteria();
         $sub_kriteria->kriteria_id = $data->id;
         $sub_kriteria->nama = $request->nama_sub_kriteria;
         $sub_kriteria->nilai = $request->nilai;
+        $sub_kriteria->user_id = $user_id;
         $sub_kriteria->save();
 
         $data_mobil = Alternatif::all();
@@ -84,8 +89,8 @@ class KriteriaController extends Controller
      */
     public function show($id)
     {
-        $kriteria = Kriteria::find($id);
-        $datas    = SubKriteria::where('kriteria_id', $id)->orderBy('nilai', 'desc')->paginate(10);
+        $kriteria = Kriteria::where('user_id', Auth::user()->id)->where('id', $id)->first();
+        $datas    = SubKriteria::where('user_id', Auth::user()->id)->where('kriteria_id', $id)->orderBy('nilai', 'desc')->paginate(10);
         return view('kriteria.show')->with('kriteria', $kriteria)->with('datas', $datas);
     }
 
@@ -111,9 +116,12 @@ class KriteriaController extends Controller
      */
     public function update(KriteriaRequest $request, $id)
     {
+        $user_id = Auth::user()->id;
+
         $data = Kriteria::find($id);
         $data->nama = $request->nama;
         $data->jenis_kriteria_id = $request->jenis_kriteria_id;
+        $data->user_id = $user_id;
         $data->save();
 
         Session::flash("notice", "Kriteria $data->nama Berhasil Diupdate");
@@ -144,10 +152,13 @@ class KriteriaController extends Controller
 
     public function storesubkriteria(SubKriteriaRequest $request)
     {
+        $user_id = Auth::user()->id;
+
         $data = new SubKriteria();
         $data->nama = $request->nama;
         $data->nilai = $request->nilai;
         $data->kriteria_id = $request->kriteria_id;
+        $data->user_id = $user_id;
         $data->save();
 
         Session::flash("notice", "Sub Kriteria $data->nama Berhasil Dibuat.");
@@ -177,7 +188,10 @@ class KriteriaController extends Controller
 
     public function updatesubkriteria(SubKriteriaRequest $request, $id)
     {
+        $user_id = Auth::user()->id;
+
         $data = SubKriteria::find($id);
+        $data->user_id = $user_id;
         $data->nama = $request->nama;
         $data->nilai = $request->nilai;
         $data->kriteria_id = $request->kriteria_id;

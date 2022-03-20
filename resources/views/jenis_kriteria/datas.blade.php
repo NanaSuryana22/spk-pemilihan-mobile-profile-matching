@@ -7,13 +7,17 @@
             {{-- <button type="button" class="btn btn-secondary btn-sm mt-2">Tambah Data Jenis Kriteria</button> --}}
         </div>
         <div class="col-md-12 col-sm-12 col-lg-12 form-group pull-right top_search">
-            <div class="input-group">
-                <input type="text" name="search" id="search" wire:model.debounce.350ms="search" class="form-control ml-2"
-                    aria-label="Search" aria-describedby="search-addon" placeholder="Cari...">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Go!</button>
-                </span>
-            </div>
+            <form action="{{ route('kriteria_types.index') }}" method="GET">
+                <div class="input-group">
+                    <input type="text" name="search" id="search" wire:model.debounce.350ms="search"
+                        class="form-control ml-2" aria-label="Search" aria-describedby="search-addon"
+                        placeholder="Cari...">
+                    <span class="input-group-btn">
+                        {{-- <button class="btn btn-default" type="button">Go!</button> --}}
+                        <input type="submit" class="btn btn-default" type="button" value="Go !">
+                    </span>
+                </div>
+            </form>
         </div>
         <div class="col-md-12">
             <section id="no-more-tables">

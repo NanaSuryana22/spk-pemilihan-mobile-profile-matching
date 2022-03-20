@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\Auth;
 class SubKriteria extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nama', 'kriteria_id', 'nilai'
+        'nama', 'kriteria_id', 'nilai', 'user_id'
     ];
 
     protected $table = 'sub_kriteria';
@@ -25,12 +25,20 @@ class SubKriteria extends Model
         return $this->hasMany('App\Models\OptAlternatif', 'sub_kriteria_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
     public function scopeSearch($query, $term) {
         $term = "%$term%";
         $query->where(function($query) use ($term) {
             $query->where('kriteria_id', 'like', '%' .$term. '%')
+                  ->where('user_id', Auth::user()->id)
                   ->orWhere('nama','like', '%' .$term. '%')
-                  ->orWhere('nilai','like', '%' .$term. '%');
+                  ->where('user_id', Auth::user()->id)
+                  ->orWhere('nilai','like', '%' .$term. '%')
+                  ->where('user_id', Auth::user()->id);
         });
     }
 }

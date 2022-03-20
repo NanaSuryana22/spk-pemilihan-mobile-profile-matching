@@ -9,6 +9,7 @@ use App\Models\Alternatif;
 use App\Models\JenisKriteria;
 use App\Models\OptAlternatif;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PenilaianController extends Controller
 {
@@ -19,15 +20,16 @@ class PenilaianController extends Controller
      */
     public function index(Request $request)
     {
-        $mobil        = Alternatif::orderBy('id', 'asc')->get();
-        $kriteria     = Kriteria::orderBy('jenis_kriteria_id', 'asc')->get();
-        $sub_kriteria = SubKriteria::orderBy('nama', 'asc')->get();
+        $user_id      = Auth::user()->id;
+        $mobil        = Alternatif::where('user_id', Auth::user()->id)->orderBy('id', 'asc')->get();
+        $kriteria     = Kriteria::where('user_id', Auth::user()->id)->orderBy('jenis_kriteria_id', 'asc')->get();
+        $sub_kriteria = SubKriteria::where('user_id', Auth::user()->id)->orderBy('nama', 'asc')->get();
         if ($request !== null) {
             $request = $request;
         } else {
             $request = null;
         }
-        return view('penilaian.index')->with('kriteria', $kriteria)->with('sub_kriteria', $sub_kriteria)->with('mobil', $mobil)->with('request', $request);
+        return view('penilaian.index')->with('user_id', $user_id)->with('kriteria', $kriteria)->with('sub_kriteria', $sub_kriteria)->with('mobil', $mobil)->with('request', $request);
     }
 
     /**
@@ -38,9 +40,9 @@ class PenilaianController extends Controller
      */
     public function profile_matching(Request $request)
     {
-        $mobil          = Alternatif::orderBy('id', 'asc')->get();
-        $kriteria       = Kriteria::orderBy('jenis_kriteria_id', 'asc')->get();
-        $sub_kriteria   = SubKriteria::orderBy('nama', 'asc')->get();
+        $mobil          = Alternatif::where('user_id', Auth::user()->id)->orderBy('id', 'asc')->get();
+        $kriteria       = Kriteria::where('user_id', Auth::user()->id)->orderBy('jenis_kriteria_id', 'asc')->get();
+        $sub_kriteria   = SubKriteria::where('user_id', Auth::user()->id)->orderBy('nama', 'asc')->get();
         $jenis_kriteria = DB::select("select k.id as id_kriteria ,jk.nama as nama_jenis from kriteria k LEFT JOIN jenis_kriterias jk ON jk.id = k.jenis_kriteria_id order by k.id");
         $opt_alternatifs = OptAlternatif::orderBy('alternatif_id', 'asc')->get();
         if ($request !== null) {

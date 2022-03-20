@@ -7,6 +7,7 @@ use App\Models\Kriteria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\SubKriteriaRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SubKriteriaController extends Controller
 {
@@ -47,10 +48,13 @@ class SubKriteriaController extends Controller
      */
     public function store(SubKriteriaRequest $request)
     {
+        $user_id = Auth::user()->id;
+
         $data = new SubKriteria();
         $data->nama = $request->nama;
         $data->nilai = $request->nilai;
         $data->kriteria_id = $request->kriteria_id;
+        $data->user_id = $user_id;
         $data->save();
 
         Session::flash("notice", "Sub Kriteria $data->nama Berhasil Dibuat.");
@@ -91,10 +95,13 @@ class SubKriteriaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user_id = Auth::user()->id;
+
         $data = SubKriteria::find($id);
         $data->nama = $request->nama;
         $data->nilai = $request->nilai;
         $data->kriteria_id = $request->kriteria_id;
+        $data->user_id = $user_id;
         $data->save();
 
         Session::flash("notice", "Sub Kriteria $data->nama Berhasil Diedit.");

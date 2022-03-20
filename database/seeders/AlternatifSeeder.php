@@ -7,6 +7,8 @@ use App\Models\Alternatif;
 use App\Models\OptAlternatif;
 use App\Models\Kriteria;
 use App\Models\SubKriteria;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class AlternatifSeeder extends Seeder
 {
@@ -17,30 +19,40 @@ class AlternatifSeeder extends Seeder
      */
     public function run()
     {
+        $jml_alternatif = Alternatif::count();
+        if($jml_alternatif >= 1) {
+            DB::table('alternatif')->delete();
+            DB::table('opt_alternatifs')->delete();
+        }
+
+        $user_id = User::first()->id;
+
         $data_1 = new Alternatif();
         $data_1->nama = 'Hilux D Cab 2.4 V (4x4) DSL A/T';
         $data_1->image = 'img/Hilux_D_Cab.png';
         $data_1->desc = 'Hilux D Cab 2.4 V (4x4) DSL A/T adalah merk atau seri mobil dari merk toyota dengan kategori pickup dan jenis transmisi otomatis menggunakan bahan bakar solar';
+        $data_1->user_id = $user_id;
         $data_1->save();
 
         $kriterias = Kriteria::all();
         foreach($kriterias as $k) {
             if($k->nama == 'Merk Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Toyota')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Toyota')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Kategori Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Harga') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 300 Juta')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 300 Juta')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis Transmisi') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Otomatis')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Otomatis')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis BBM') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Solar')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Solar')->where('user_id', $user_id)->first()->id;
             }
 
             $child_data = new OptAlternatif();
             $child_data->alternatif_id = $data_1->id;
             $child_data->kriteria_id = $k->id;
             $child_data->sub_kriteria_id = $sub_kriteria_id;
+            $child_data->user_id = $user_id;
             $child_data->save();
         }
 
@@ -48,26 +60,28 @@ class AlternatifSeeder extends Seeder
         $data_2->nama = 'TritonULTIMATE AT Double Cab 4WD';
         $data_2->image = 'img/triton.jpg';
         $data_2->desc = 'TritonULTIMATE AT Double Cab 4WD adalah merk atau seri mobil dari merk daihatsu dengan kategori pickup dan jenis transmisi otomatis menggunakan bahan bakar bensin';
+        $data_2->user_id = $user_id;
         $data_2->save();
 
         $kriterias = Kriteria::all();
         foreach($kriterias as $k) {
             if($k->nama == 'Merk Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Daihatsu')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Daihatsu')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Kategori Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Harga') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 300 Juta')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 300 Juta')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis Transmisi') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Otomatis')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Otomatis')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis BBM') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Bensin')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Bensin')->where('user_id', $user_id)->first()->id;
             }
 
             $child_data = new OptAlternatif();
             $child_data->alternatif_id = $data_2->id;
             $child_data->kriteria_id = $k->id;
             $child_data->sub_kriteria_id = $sub_kriteria_id;
+            $child_data->user_id = $user_id;
             $child_data->save();
         }
 
@@ -75,26 +89,28 @@ class AlternatifSeeder extends Seeder
         $data_3->nama = 'Gran Max PU1.3 3W FH';
         $data_3->image = 'img/grand-max.jpg';
         $data_3->desc = 'Gran Max PU1.3 3W FH adalah merk atau seri mobil dari merk Honda dengan kategori pickup dan jenis transmisi manual menggunakan bahan bakar bensin';
+        $data_3->user_id = $user_id;
         $data_3->save();
 
         $kriterias = Kriteria::all();
         foreach($kriterias as $k) {
             if($k->nama == 'Merk Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Honda')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Honda')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Kategori Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Harga') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 140 Juta')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 140 Juta')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis Transmisi') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Manual')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Manual')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis BBM') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Bensin')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Bensin')->where('user_id', $user_id)->first()->id;
             }
 
             $child_data = new OptAlternatif();
             $child_data->alternatif_id = $data_3->id;
             $child_data->kriteria_id = $k->id;
             $child_data->sub_kriteria_id = $sub_kriteria_id;
+            $child_data->user_id = $user_id;
             $child_data->save();
         }
 
@@ -102,26 +118,28 @@ class AlternatifSeeder extends Seeder
         $data_4->nama = 'Carry Wide-Deck AC/PS';
         $data_4->image = 'img/carry.jpg';
         $data_4->desc = 'Carry Wide-Deck AC/PS adalah merk atau seri mobil dari merk Mitsubishi dengan kategori pickup dan jenis transmisi manual menggunakan bahan bakar bensin';
+        $data_4->user_id = $user_id;
         $data_4->save();
 
         $kriterias = Kriteria::all();
         foreach($kriterias as $k) {
             if($k->nama == 'Merk Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Mitsubishi')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Mitsubishi')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Kategori Mobil') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Pickup')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Harga') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 150 Juta')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 150 Juta')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis Transmisi') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Manual')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Manual')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis BBM') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Bensin')->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Bensin')->where('user_id', $user_id)->first()->id;
             }
 
             $child_data = new OptAlternatif();
             $child_data->alternatif_id = $data_4->id;
             $child_data->kriteria_id = $k->id;
             $child_data->sub_kriteria_id = $sub_kriteria_id;
+            $child_data->user_id = $user_id;
             $child_data->save();
         }
     }

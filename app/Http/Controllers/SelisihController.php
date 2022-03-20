@@ -6,6 +6,7 @@ use App\Models\Selisih;
 use Illuminate\Http\Request;
 use App\Http\Requests\SelisihRequest;
 use Session;
+use Illuminate\Support\Facades\Auth;
 
 class SelisihController extends Controller
 {
@@ -45,10 +46,13 @@ class SelisihController extends Controller
      */
     public function store(SelisihRequest $request)
     {
+        $user_id = Auth::user()->id;
+
         $data = new Selisih();
-        $data->bobot = $request->bobot;
-        $data->nilai = $request->nilai;
+        $data->bobot      = $request->bobot;
+        $data->nilai      = $request->nilai;
         $data->keterangan = $request->keterangan;
+        $data->user_id    = $user_id;
         $data->save();
 
         Session::flash("notice", "Selisih Baru Berhasil Dibuat.");
@@ -85,12 +89,15 @@ class SelisihController extends Controller
      * @param  \App\Models\Selisih  $selisih
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SelisihRequest $request, $id)
     {
-        $data = Selisih::find($id);
-        $data->bobot = $request->bobot;
-        $data->nilai = $request->nilai;
+        $user_id = Auth::user()->id;
+
+        $data             = Selisih::find($id);
+        $data->bobot      = $request->bobot;
+        $data->nilai      = $request->nilai;
         $data->keterangan = $request->keterangan;
+        $data->user_id    = $user_id;
         $data->save();
 
         Session::flash("notice", "Data Selisih Terpilih Berhasil Diupdate");
