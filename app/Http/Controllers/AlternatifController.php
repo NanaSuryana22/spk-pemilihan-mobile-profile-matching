@@ -38,8 +38,8 @@ class AlternatifController extends Controller
      */
     public function create()
     {
-        $kriteria = Kriteria::orderBy('jenis_kriteria_id', 'asc')->where('user_id', Auth::user()->id)->get();
-        $subkriteria = SubKriteria::orderBy('kriteria_id', 'asc')->where('user_id', Auth::user()->id)->get();
+        $kriteria = Kriteria::where('user_id', Auth::user()->id)->orderBy('jenis_kriteria_id', 'asc')->get();
+        $subkriteria = SubKriteria::where('user_id', Auth::user()->id)->orderBy('kriteria_id', 'asc')->get();
         return view('alternatif.create')->with('kriteria', $kriteria)->with('subkriteria', $subkriteria);
     }
 
@@ -68,7 +68,7 @@ class AlternatifController extends Controller
         $data->user_id = $user_id;
         $data->save();
 
-        $kriteria = Kriteria::orderBy('nama', 'asc')->get();
+        $kriteria = Kriteria::where('user_id', Auth::user()->id)->orderBy('nama', 'asc')->get();
         foreach($kriteria as $n) {
             $opt_alternatif = new OptAlternatif();
             $opt_alternatif->alternatif_id = $data->id;
@@ -105,7 +105,7 @@ class AlternatifController extends Controller
     public function edit($id)
     {
         $alternatif     = Alternatif::find($id);
-        $kriteria       = Kriteria::orderBy('jenis_kriteria_id', 'asc')->get();
+        $kriteria       = Kriteria::where('user_id', Auth::user()->id)->orderBy('jenis_kriteria_id', 'asc')->get();
         $opt_alternatif = $alternatif->opt_alternatifs;
         return view('alternatif.edit')->with('alternatif', $alternatif)->with('kriteria', $kriteria)->with('opt_alternatif', $opt_alternatif);
     }
@@ -138,7 +138,7 @@ class AlternatifController extends Controller
         $data->user_id = $user_id;
         $data->save();
 
-        $kriteria = Kriteria::orderBy('nama', 'asc')->get();
+        $kriteria = Kriteria::where('user_id', Auth::user()->id)->orderBy('nama', 'asc')->get();
         foreach($kriteria as $n) {
           $request_kriteria_id = $n->id;
           $opt_alternatif = OptAlternatif::where('kriteria_id', $n->id)->where('alternatif_id', $data->id)->first();

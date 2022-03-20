@@ -36,7 +36,7 @@ class SubKriteriaController extends Controller
      */
     public function create()
     {
-        $kriteria = Kriteria::orderBy('nama', 'asc')->get();
+        $kriteria = Kriteria::where('user_id', Auth::user()->id)->orderBy('nama', 'asc')->get();
         return view('sub_kriteria.create')->with('kriteria', $kriteria);
     }
 
@@ -82,7 +82,7 @@ class SubKriteriaController extends Controller
     public function edit($id)
     {
         $sub_kriteria = SubKriteria::find($id);
-        $kriteria     = Kriteria::orderBy('nama', 'asc')->get();
+        $kriteria     = Kriteria::where('user_id', Auth::user()->id)->orderBy('nama', 'asc')->get();
         return view('sub_kriteria.edit')->with('sub_kriteria', $sub_kriteria)->with('kriteria', $kriteria);
     }
 

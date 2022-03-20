@@ -41,7 +41,7 @@ class KriteriaController extends Controller
      */
     public function create()
     {
-        $jenis_kriteria = JenisKriteria::orderBy('nama', 'asc')->get();
+        $jenis_kriteria = JenisKriteria::where('user_id', Auth::user()->id)->orderBy('nama', 'asc')->get();
         return view('kriteria.create')->with('jenis_kriteria', $jenis_kriteria);
     }
 
@@ -68,12 +68,13 @@ class KriteriaController extends Controller
         $sub_kriteria->user_id = $user_id;
         $sub_kriteria->save();
 
-        $data_mobil = Alternatif::all();
+        $data_mobil = Alternatif::where('user_id', Auth::user()->id)->get();
         foreach($data_mobil as $d) {
             $opt_alternatif = new OptAlternatif();
             $opt_alternatif->alternatif_id = $d->id;
             $opt_alternatif->kriteria_id = $data->id;
             $opt_alternatif->sub_kriteria_id = $sub_kriteria->id;
+            $opt_alternatif->user_id = $user_id;
             $opt_alternatif->save();
         }
 
@@ -103,7 +104,7 @@ class KriteriaController extends Controller
     public function edit($id)
     {
         $kriteria       = Kriteria::find($id);
-        $jenis_kriteria = JenisKriteria::orderBy('nama', 'asc')->get();
+        $jenis_kriteria = JenisKriteria::where('user_id', Auth::user()->id)->orderBy('nama', 'asc')->get();
         return view('kriteria.edit')->with('jenis_kriteria', $jenis_kriteria)->with('kriteria', $kriteria);
     }
 
