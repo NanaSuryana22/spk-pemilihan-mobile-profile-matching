@@ -291,7 +291,7 @@ class User extends Authenticatable
             $data_1->user_id = $user_id;
             $data_1->save();
 
-            $kriterias = Kriteria::all();
+            $kriterias = Kriteria::where('user_id', $user_id)->get();
             foreach($kriterias as $k) {
                 if($k->nama == 'Merk Mobil') {
                     $sub_kriteria_id = SubKriteria::where('nama', 'Toyota')->where('user_id', $user_id)->first()->id;
@@ -320,7 +320,7 @@ class User extends Authenticatable
             $data_2->user_id = $user_id;
             $data_2->save();
 
-            $kriterias = Kriteria::all();
+            $kriterias = Kriteria::where('user_id', $user_id)->get();
             foreach($kriterias as $k) {
                 if($k->nama == 'Merk Mobil') {
                     $sub_kriteria_id = SubKriteria::where('nama', 'Daihatsu')->where('user_id', $user_id)->first()->id;
@@ -349,7 +349,7 @@ class User extends Authenticatable
             $data_3->user_id = $user_id;
             $data_3->save();
 
-            $kriterias = Kriteria::all();
+            $kriterias = Kriteria::where('user_id', $user_id)->get();
             foreach($kriterias as $k) {
                 if($k->nama == 'Merk Mobil') {
                     $sub_kriteria_id = SubKriteria::where('nama', 'Honda')->where('user_id', $user_id)->first()->id;
@@ -378,7 +378,7 @@ class User extends Authenticatable
             $data_4->user_id = $user_id;
             $data_4->save();
 
-            $kriterias = Kriteria::all();
+            $kriterias = Kriteria::where('user_id', $user_id)->get();
             foreach($kriterias as $k) {
                 if($k->nama == 'Merk Mobil') {
                     $sub_kriteria_id = SubKriteria::where('nama', 'Mitsubishi')->where('user_id', $user_id)->first()->id;

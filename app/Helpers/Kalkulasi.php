@@ -15,13 +15,13 @@ function get_nilai_gap($nilai_filter,$nilai_profile) {
 }
 
 function get_nilai_selisih($nilai_gap) {
-	$selisih = DB::table('selisih')->where('nilai', $nilai_gap)->first();
+	$selisih = DB::table('selisih')->where('user_id', Auth::user()->id)->where('nilai', $nilai_gap)->first();
 	return (isset($selisih->bobot) ? $selisih->bobot : '');
 }
 
 function get_nilai_akhir($ncf,$nsf) {
-	$core_factor = JenisKriteria::where('nama','Core Factor (CF)')->first()->nilai;
-	$secondary_factor = JenisKriteria::where('nama','Secondary Factor (SF)')->first()->nilai;
+	$core_factor = JenisKriteria::where('nama','Core Factor (CF)')->where('user_id', Auth::user()->id)->first()->nilai;
+	$secondary_factor = JenisKriteria::where('nama','Secondary Factor (SF)')->where('user_id', Auth::user()->id)->first()->nilai;
 	$nilai_akhir = ($core_factor*$ncf)+($secondary_factor*$nsf);
 	return $nilai_akhir;
 }
