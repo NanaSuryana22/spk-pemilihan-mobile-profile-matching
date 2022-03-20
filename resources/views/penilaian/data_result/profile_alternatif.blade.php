@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Auth;
                         <td class="th-font" data-title="Nama Alternatif">{{ $m->nama }}</td>
                         @foreach ($m->opt_alternatifs->where('user_id', Auth::user()->id) as $k)
                             <td class="th-font" data-title="">
-                                {{ $k->sub_kriteria->nilai }}</td>
+                                {{ $k->sub_kriteria->nilai }}
+                            </td>
                         @endforeach
                     </tr>
                 @endforeach
