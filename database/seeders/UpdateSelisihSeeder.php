@@ -24,65 +24,93 @@ class UpdateSelisihSeeder extends Seeder
         foreach($users as $u) {
             if(isset($u->selisihs)) {
                 $data = new Selisih();
-                $data->bobot = 5;
+                $data->bobot = 13;
                 $data->nilai = 0;
-                $data->keterangan = 'Tidak ada selisih (kompetensi sesuai dengan yang dibutuhkan)';
+                $data->keterangan = 'Kriteria sesuai dengan yang di butuhkan';
                 $data->user_id = $u->id;
                 $data->save();
 
                 $data = new Selisih();
-                $data->bobot = 4.5;
+                $data->bobot = 12;
                 $data->nilai = 1;
-                $data->keterangan = 'Kompetensi individu kelebihan 1 tingkat';
+                $data->keterangan = 'Kriteria kelebihan  1 tingkat/level';
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new Selisih();
+                $data->bobot = 11;
+                $data->nilai = -1;
+                $data->keterangan = 'Kriteria kekurangan  1 tingkat/level';
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new Selisih();
+                $data->bobot = 10;
+                $data->nilai = 2;
+                $data->keterangan = 'Kriteria kelebihan 2 tingkat/level';
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new Selisih();
+                $data->bobot = 9;
+                $data->nilai = -2;
+                $data->keterangan = 'Kriteria kekurangan  2 tingkat/level';
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new Selisih();
+                $data->bobot = 8;
+                $data->nilai = 3;
+                $data->keterangan = 'Kriteria kelebihan 3 tingkat/level';
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new Selisih();
+                $data->bobot = 7;
+                $data->nilai = -3;
+                $data->keterangan = 'Kriteria kekurangan  3 tingkat/level';
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new Selisih();
+                $data->bobot = 6;
+                $data->nilai = 4;
+                $data->keterangan = 'Kriteria kelebihan  4 tingkat/level';
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new Selisih();
+                $data->bobot = 5;
+                $data->nilai = -4;
+                $data->keterangan = 'Kriteria kekurangan  4 tingkat/level';
                 $data->user_id = $u->id;
                 $data->save();
 
                 $data = new Selisih();
                 $data->bobot = 4;
-                $data->nilai = -1;
-                $data->keterangan = 'Kompetensi individu kekurangan 1 tingkat';
+                $data->nilai = 5;
+                $data->keterangan = 'Kriteria kelebihan 5 tingkat/level';
                 $data->user_id = $u->id;
                 $data->save();
 
-                $data = new Selisih();
-                $data->bobot = 3.5;
-                $data->nilai = 2;
-                $data->keterangan = 'Kompetensi individu kelebihan 2 tingkat';
-                $data->user_id = $u->id;
-                $data->save();
-                
                 $data = new Selisih();
                 $data->bobot = 3;
-                $data->nilai = -2;
-                $data->keterangan = 'Kompetensi individu kekurangan 2 tingkat';
-                $data->user_id = $u->id;
-                $data->save();
-
-                $data = new Selisih();
-                $data->bobot = 2.5;
-                $data->nilai = 3;
-                $data->keterangan = 'Kompetensi individu kelebihan 3 tingkat';
+                $data->nilai = -5;
+                $data->keterangan = 'Kriteria kekurangan 5 tingkat/level';
                 $data->user_id = $u->id;
                 $data->save();
 
                 $data = new Selisih();
                 $data->bobot = 2;
-                $data->nilai = -3;
-                $data->keterangan = 'Kompetensi individu kekurangan 3 tingkat';
-                $data->user_id = $u->id;
-                $data->save();
-
-                $data = new Selisih();
-                $data->bobot = 1.5;
-                $data->nilai = 4;
-                $data->keterangan = 'Kompetensi individu kelebihan 4 tingkat';
+                $data->nilai = 6;
+                $data->keterangan = 'Kriteria kelebihan 6 tingkat/level';
                 $data->user_id = $u->id;
                 $data->save();
 
                 $data = new Selisih();
                 $data->bobot = 1;
-                $data->nilai = -4;
-                $data->keterangan = 'Kompetensi individu kekurangan 4 tingkat';
+                $data->nilai = -6;
+                $data->keterangan = 'Kriteria kekurangan 6 tingkat/level';
                 $data->user_id = $u->id;
                 $data->save();
             }

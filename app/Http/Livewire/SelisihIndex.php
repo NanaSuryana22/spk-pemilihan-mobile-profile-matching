@@ -15,14 +15,14 @@ class SelisihIndex extends Component
 
     public function render()
     {
-        $datas   = Selisih::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(15);
+        $datas   = Selisih::where('user_id', Auth::user()->id)->orderBy('bobot', 'desc')->paginate(15);
         $user_id = Auth::user()->id;
 
         if($this->search !== null) {
           $datas = Selisih::where('nilai','like', '%' . $this->search . '%')->where('user_id', $user_id)
                             ->orWhere('bobot','like', '%' . $this->search . '%')->where('user_id', $user_id)
                             ->orWhere('keterangan','like', '%' . $this->search . '%')->where('user_id', $user_id)
-                            ->orderBy('created_at', 'desc')->paginate(15);
+                            ->orderBy('bobot', 'desc')->paginate(15);
         }
         return view('livewire.selisih-index', ['datas' => $datas]);
     }
