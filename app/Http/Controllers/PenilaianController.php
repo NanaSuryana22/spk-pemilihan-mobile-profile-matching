@@ -43,7 +43,7 @@ class PenilaianController extends Controller
         $mobil          = Alternatif::where('user_id', Auth::user()->id)->orderBy('id', 'asc')->get();
         $kriteria       = Kriteria::where('user_id', Auth::user()->id)->orderBy('jenis_kriteria_id', 'asc')->get();
         $sub_kriteria   = SubKriteria::where('user_id', Auth::user()->id)->orderBy('nama', 'asc')->get();
-        $jenis_kriteria = DB::select("select k.id as id_kriteria ,jk.nama as nama_jenis from kriteria k LEFT JOIN jenis_kriterias jk ON jk.id = k.jenis_kriteria_id order by k.id");
+        $jenis_kriteria = DB::select("select k.id as id_kriteria ,jk.nama as nama_jenis from kriterias k LEFT JOIN jenis_kriterias jk ON jk.id = k.jenis_kriteria_id order by k.id");
         $opt_alternatifs = OptAlternatif::orderBy('alternatif_id', 'asc')->get();
         if ($request !== null) {
             $request = $request;
