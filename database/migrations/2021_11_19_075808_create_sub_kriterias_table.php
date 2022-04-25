@@ -13,7 +13,7 @@ class CreateSubKriteriasTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_kriteria', function (Blueprint $table) {
+        Schema::create('sub_kriterias', function (Blueprint $table) {
             $table->id();
             $table->integer('kriteria_id')->unsigned();
             $table->string('nama');

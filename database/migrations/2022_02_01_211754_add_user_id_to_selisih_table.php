@@ -13,7 +13,7 @@ class AddUserIdToSelisihTable extends Migration
      */
     public function up()
     {
-        Schema::table('selisih', function (Blueprint $table) {
+        Schema::table('selisihs', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
         });
     }

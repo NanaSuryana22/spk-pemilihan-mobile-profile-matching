@@ -13,7 +13,7 @@ class AddUserIdToAlternatifTable extends Migration
      */
     public function up()
     {
-        Schema::table('alternatif', function (Blueprint $table) {
+        Schema::table('alternatifs', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
         });
     }
@@ -25,7 +25,7 @@ class AddUserIdToAlternatifTable extends Migration
      */
     public function down()
     {
-        Schema::table('alternatif', function (Blueprint $table) {
+        Schema::table('alternatifs', function (Blueprint $table) {
             //
         });
     }

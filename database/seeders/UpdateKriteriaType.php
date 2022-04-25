@@ -24,13 +24,13 @@ class UpdateKriteriaType extends Seeder
             if(isset($u->jenis_kriterias)) {
                 $data = new JenisKriteria();
                 $data->nama = 'Core Factor (CF)';
-                $data->nilai = 0.6;
+                $data->nilai = 0.7;
                 $data->user_id = $u->id;
                 $data->save();
 
                 $data = new JenisKriteria();
                 $data->nama = 'Secondary Factor (SF)';
-                $data->nilai = 0.4;
+                $data->nilai = 0.3;
                 $data->user_id = $u->id;
                 $data->save();
             }

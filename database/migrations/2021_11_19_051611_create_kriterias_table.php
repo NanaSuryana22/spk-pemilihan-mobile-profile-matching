@@ -13,7 +13,7 @@ class CreateKriteriasTable extends Migration
      */
     public function up()
     {
-        Schema::create('kriteria', function (Blueprint $table) {
+        Schema::create('kriterias', function (Blueprint $table) {
             $table->id();
             $table->integer('jenis_kriteria_id')->unsigned();
             $table->string('nama');

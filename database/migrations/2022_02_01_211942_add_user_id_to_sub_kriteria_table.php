@@ -13,7 +13,7 @@ class AddUserIdToSubKriteriaTable extends Migration
      */
     public function up()
     {
-        Schema::table('sub_kriteria', function (Blueprint $table) {
+        Schema::table('sub_kriterias', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
         });
     }
@@ -25,7 +25,7 @@ class AddUserIdToSubKriteriaTable extends Migration
      */
     public function down()
     {
-        Schema::table('sub_kriteria', function (Blueprint $table) {
+        Schema::table('sub_kriterias', function (Blueprint $table) {
             //
         });
     }

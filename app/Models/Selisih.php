@@ -11,7 +11,7 @@ class Selisih extends Model
 
     protected $fillable = ['nilai', 'bobot', 'keterangan', 'user_id'];
 
-    protected $table = 'selisih';
+    protected $table = 'selisihs';
 
     public function user()
     {

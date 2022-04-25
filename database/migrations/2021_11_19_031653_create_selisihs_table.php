@@ -13,7 +13,7 @@ class CreateSelisihsTable extends Migration
      */
     public function up()
     {
-        Schema::create('selisih', function (Blueprint $table) {
+        Schema::create('selisihs', function (Blueprint $table) {
             $table->id();
             $table->integer('nilai');
             $table->double('bobot', 11,1);

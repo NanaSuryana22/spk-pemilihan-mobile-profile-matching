@@ -197,11 +197,11 @@ class RegisterController extends Controller
         $dataKriteria5->user_id = $user->id;
         $dataKriteria5->save();
 
-        $merk_mobil = DB::table('kriteria')->where('nama', 'Merk Mobil')->first();
-        $kategori_mobil = DB::table('kriteria')->where('nama', 'Kategori Mobil')->first();
-        $harga = DB::table('kriteria')->where('nama', 'Harga')->first();
-        $jenis_transmisi = DB::table('kriteria')->where('nama', 'Jenis Transmisi')->first();
-        $jenis_bbm = DB::table('kriteria')->where('nama', 'Jenis BBM')->first();
+        $merk_mobil = DB::table('kriterias')->where('nama', 'Merk Mobil')->first();
+        $kategori_mobil = DB::table('kriterias')->where('nama', 'Kategori Mobil')->first();
+        $harga = DB::table('kriterias')->where('nama', 'Harga')->first();
+        $jenis_transmisi = DB::table('kriterias')->where('nama', 'Jenis Transmisi')->first();
+        $jenis_bbm = DB::table('kriterias')->where('nama', 'Jenis BBM')->first();
 
         $dataSubKriteria1 = new SubKriteria();
         $dataSubKriteria1->nama = 'Toyota';

@@ -16,7 +16,7 @@ class Kriteria extends Model
         'user_id'
     ];
 
-    protected $table = 'kriteria';
+    protected $table = 'kriterias';
 
     public function jenis_kriteria()
     {

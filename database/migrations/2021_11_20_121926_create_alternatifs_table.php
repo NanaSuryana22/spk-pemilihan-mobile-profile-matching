@@ -13,7 +13,7 @@ class CreateAlternatifsTable extends Migration
      */
     public function up()
     {
-        Schema::create('alternatif', function (Blueprint $table) {
+        Schema::create('alternatifs', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
             $table->string('image')->nullable();

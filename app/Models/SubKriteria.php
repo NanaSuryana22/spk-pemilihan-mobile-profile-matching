@@ -13,7 +13,7 @@ class SubKriteria extends Model
         'nama', 'kriteria_id', 'nilai', 'user_id'
     ];
 
-    protected $table = 'sub_kriteria';
+    protected $table = 'sub_kriterias';
 
     public function kriteria()
     {

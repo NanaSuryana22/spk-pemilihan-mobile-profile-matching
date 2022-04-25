@@ -18,16 +18,16 @@ class UpdateSubKriteriaSeeder extends Seeder
     {
         $count_data = SubKriteria::count();
         if($count_data >= 1) {
-            DB::table('sub_kriteria')->delete();
+            DB::table('sub_kriterias')->delete();
         }
         $users = User::all();
         foreach($users as $u) {
             if(isset($u->sub_kriterias)) {
-                $merk_mobil = DB::table('kriteria')->where('nama', 'Merk Mobil')->first();
-                $kategori_mobil = DB::table('kriteria')->where('nama', 'Kategori Mobil')->first();
-                $harga = DB::table('kriteria')->where('nama', 'Harga')->first();
-                $jenis_transmisi = DB::table('kriteria')->where('nama', 'Jenis Transmisi')->first();
-                $jenis_bbm = DB::table('kriteria')->where('nama', 'Jenis BBM')->first();
+                $merk_mobil = DB::table('kriterias')->where('nama', 'Merk Mobil')->first();
+                $kategori_mobil = DB::table('kriterias')->where('nama', 'Kategori Mobil')->first();
+                $harga = DB::table('kriterias')->where('nama', 'Harga')->first();
+                $jenis_transmisi = DB::table('kriterias')->where('nama', 'Jenis Transmisi')->first();
+                $jenis_bbm = DB::table('kriterias')->where('nama', 'Jenis BBM')->first();
 
                 $data = new SubKriteria();
                 $data->nama = 'Toyota';
@@ -75,33 +75,75 @@ class UpdateSubKriteriaSeeder extends Seeder
                 $data = new SubKriteria();
                 $data->nama = 'Wagon/Hatchback';
                 $data->kriteria_id = $kategori_mobil->id;
-                $data->nilai = 5;
+                $data->nilai = 11;
                 $data->user_id = $u->id;
                 $data->save();
 
                 $data = new SubKriteria();
                 $data->nama = 'MPV';
                 $data->kriteria_id = $kategori_mobil->id;
-                $data->nilai = 4;
+                $data->nilai = 10;
                 $data->user_id = $u->id;
                 $data->save();
 
                 $data = new SubKriteria();
                 $data->nama = 'Pickup';
                 $data->kriteria_id = $kategori_mobil->id;
-                $data->nilai = 3;
+                $data->nilai = 9;
                 $data->user_id = $u->id;
                 $data->save();
 
                 $data = new SubKriteria();
                 $data->nama = 'SUV';
                 $data->kriteria_id = $kategori_mobil->id;
-                $data->nilai = 2;
+                $data->nilai = 8;
                 $data->user_id = $u->id;
                 $data->save();
 
                 $data = new SubKriteria();
                 $data->nama = 'Sedan';
+                $data->kriteria_id = $kategori_mobil->id;
+                $data->nilai = 7;
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new SubKriteria();
+                $data->nama = 'Crossover';
+                $data->kriteria_id = $kategori_mobil->id;
+                $data->nilai = 6;
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new SubKriteria();
+                $data->nama = 'Convertible';
+                $data->kriteria_id = $kategori_mobil->id;
+                $data->nilai = 5;
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new SubKriteria();
+                $data->nama = 'Off road';
+                $data->kriteria_id = $kategori_mobil->id;
+                $data->nilai = 4;
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new SubKriteria();
+                $data->nama = 'Elektrik';
+                $data->kriteria_id = $kategori_mobil->id;
+                $data->nilai = 3;
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new SubKriteria();
+                $data->nama = 'Hybrid';
+                $data->kriteria_id = $kategori_mobil->id;
+                $data->nilai = 2;
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new SubKriteria();
+                $data->nama = 'LCGC';
                 $data->kriteria_id = $kategori_mobil->id;
                 $data->nilai = 1;
                 $data->user_id = $u->id;
@@ -145,14 +187,35 @@ class UpdateSubKriteriaSeeder extends Seeder
 
                 // Seeder untuk jenis transmisi
                 $data = new SubKriteria();
-                $data->nama = 'Otomatis';
+                $data->nama = 'Otomatis Convensional';
+                $data->kriteria_id = $jenis_transmisi->id;
+                $data->nilai = 5;
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new SubKriteria();
+                $data->nama = 'Otomatis CVT';
+                $data->kriteria_id = $jenis_transmisi->id;
+                $data->nilai = 4;
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new SubKriteria();
+                $data->nama = 'Manual';
+                $data->kriteria_id = $jenis_transmisi->id;
+                $data->nilai = 3;
+                $data->user_id = $u->id;
+                $data->save();
+
+                $data = new SubKriteria();
+                $data->nama = 'Dual Clutch (DCT)';
                 $data->kriteria_id = $jenis_transmisi->id;
                 $data->nilai = 2;
                 $data->user_id = $u->id;
                 $data->save();
 
                 $data = new SubKriteria();
-                $data->nama = 'Manual';
+                $data->nama = 'Automated Manual Transmission (AMT)';
                 $data->kriteria_id = $jenis_transmisi->id;
                 $data->nilai = 1;
                 $data->user_id = $u->id;

@@ -11,7 +11,7 @@ class Alternatif extends Model
 
     protected $fillable = ['nama', 'image', 'desc', 'user_id'];
 
-    protected $table = 'alternatif';
+    protected $table = 'alternatifs';
 
     public function opt_alternatifs()
     {

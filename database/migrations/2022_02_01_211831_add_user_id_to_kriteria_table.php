@@ -13,7 +13,7 @@ class AddUserIdToKriteriaTable extends Migration
      */
     public function up()
     {
-        Schema::table('kriteria', function (Blueprint $table) {
+        Schema::table('kriterias', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
         });
     }
@@ -25,7 +25,7 @@ class AddUserIdToKriteriaTable extends Migration
      */
     public function down()
     {
-        Schema::table('kriteria', function (Blueprint $table) {
+        Schema::table('kriterias', function (Blueprint $table) {
             //
         });
     }

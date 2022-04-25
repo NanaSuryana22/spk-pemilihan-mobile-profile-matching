@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 function get_nilai_sub_kriteria($sub_kriteria_id) {
-	$sub_kriteria = DB::table('sub_kriteria')->where('id', $sub_kriteria_id)->where('user_id', Auth::user()->id)->first();
+	$sub_kriteria = DB::table('sub_kriterias')->where('id', $sub_kriteria_id)->where('user_id', Auth::user()->id)->first();
 	return (isset($sub_kriteria->nilai) ? $sub_kriteria->nilai : 0);
 }
 
@@ -15,7 +15,7 @@ function get_nilai_gap($nilai_filter,$nilai_profile) {
 }
 
 function get_nilai_selisih($nilai_gap) {
-	$selisih = DB::table('selisih')->where('user_id', Auth::user()->id)->where('nilai', $nilai_gap)->first();
+	$selisih = DB::table('selisihs')->where('user_id', Auth::user()->id)->where('nilai', $nilai_gap)->first();
 	return (isset($selisih->bobot) ? $selisih->bobot : '');
 }
 

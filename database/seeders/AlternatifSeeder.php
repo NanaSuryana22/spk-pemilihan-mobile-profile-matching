@@ -21,7 +21,7 @@ class AlternatifSeeder extends Seeder
     {
         $jml_alternatif = Alternatif::count();
         if($jml_alternatif >= 1) {
-            DB::table('alternatif')->delete();
+            DB::table('alternatifs')->delete();
             DB::table('opt_alternatifs')->delete();
         }
 
@@ -43,7 +43,7 @@ class AlternatifSeeder extends Seeder
             } elseif($k->nama == 'Harga') {
                 $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 300 Juta')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis Transmisi') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Otomatis')->where('user_id', $user_id)->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Manual')->where('user_id', User::first()->id)->first()->id;
             } elseif($k->nama == 'Jenis BBM') {
                 $sub_kriteria_id = SubKriteria::where('nama', 'Solar')->where('user_id', $user_id)->first()->id;
             }
@@ -72,7 +72,7 @@ class AlternatifSeeder extends Seeder
             } elseif($k->nama == 'Harga') {
                 $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 300 Juta')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis Transmisi') {
-                $sub_kriteria_id = SubKriteria::where('nama', 'Otomatis')->where('user_id', $user_id)->first()->id;
+                $sub_kriteria_id = SubKriteria::where('nama', 'Otomatis CVT')->where('user_id', $user_id)->first()->id;
             } elseif($k->nama == 'Jenis BBM') {
                 $sub_kriteria_id = SubKriteria::where('nama', 'Bensin')->where('user_id', $user_id)->first()->id;
             }

@@ -139,7 +139,7 @@
                             </a>
                         </td>
                         <td class="th-font">
-                            {{ $data['nilai_akhir'] }}
+                            {!! number_format($data['nilai_akhir'], 2, ',', ' ') !!}
                         </td>
                     </tr>
                 @endforeach

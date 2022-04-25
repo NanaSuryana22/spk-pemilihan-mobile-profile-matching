@@ -28,78 +28,106 @@ class User extends Authenticatable
 
             $data = new JenisKriteria();
             $data->nama = 'Core Factor (CF)';
-            $data->nilai = 0.6;
+            $data->nilai = 0.7;
             $data->user_id = $user_id;
             $data->save();
 
             $data = new JenisKriteria();
             $data->nama = 'Secondary Factor (SF)';
-            $data->nilai = 0.4;
+            $data->nilai = 0.3;
             $data->user_id = $user_id;
             $data->save();
 
             $data = new Selisih();
-            $data->bobot = 5;
-            $data->nilai = 0;
-            $data->keterangan = 'Tidak ada selisih (kompetensi sesuai dengan yang dibutuhkan)';
-            $data->user_id = $user_id;
-            $data->save();
+                $data->bobot = 13;
+                $data->nilai = 0;
+                $data->keterangan = 'Kriteria sesuai dengan yang di butuhkan';
+                $data->user_id = $user_id;
+                $data->save();
 
-            $data = new Selisih();
-            $data->bobot = 4.5;
-            $data->nilai = 1;
-            $data->keterangan = 'Kompetensi individu kelebihan 1 tingkat';
-            $data->user_id = $user_id;
-            $data->save();
+                $data = new Selisih();
+                $data->bobot = 12;
+                $data->nilai = 1;
+                $data->keterangan = 'Kriteria kelebihan  1 tingkat/level';
+                $data->user_id = $user_id;
+                $data->save();
 
-            $data = new Selisih();
-            $data->bobot = 4;
-            $data->nilai = -1;
-            $data->keterangan = 'Kompetensi individu kekurangan 1 tingkat';
-            $data->user_id = $user_id;
-            $data->save();
+                $data = new Selisih();
+                $data->bobot = 11;
+                $data->nilai = -1;
+                $data->keterangan = 'Kriteria kekurangan  1 tingkat/level';
+                $data->user_id = $user_id;
+                $data->save();
 
-            $data = new Selisih();
-            $data->bobot = 3.5;
-            $data->nilai = 2;
-            $data->keterangan = 'Kompetensi individu kelebihan 2 tingkat';
-            $data->user_id = $user_id;
-            $data->save();
-            
-            $data = new Selisih();
-            $data->bobot = 3;
-            $data->nilai = -2;
-            $data->keterangan = 'Kompetensi individu kekurangan 2 tingkat';
-            $data->user_id = $user_id;
-            $data->save();
+                $data = new Selisih();
+                $data->bobot = 10;
+                $data->nilai = 2;
+                $data->keterangan = 'Kriteria kelebihan 2 tingkat/level';
+                $data->user_id = $user_id;
+                $data->save();
 
-            $data = new Selisih();
-            $data->bobot = 2.5;
-            $data->nilai = 3;
-            $data->keterangan = 'Kompetensi individu kelebihan 3 tingkat';
-            $data->user_id = $user_id;
-            $data->save();
+                $data = new Selisih();
+                $data->bobot = 9;
+                $data->nilai = -2;
+                $data->keterangan = 'Kriteria kekurangan  2 tingkat/level';
+                $data->user_id = $user_id;
+                $data->save();
 
-            $data = new Selisih();
-            $data->bobot = 2;
-            $data->nilai = -3;
-            $data->keterangan = 'Kompetensi individu kekurangan 3 tingkat';
-            $data->user_id = $user_id;
-            $data->save();
+                $data = new Selisih();
+                $data->bobot = 8;
+                $data->nilai = 3;
+                $data->keterangan = 'Kriteria kelebihan 3 tingkat/level';
+                $data->user_id = $user_id;
+                $data->save();
 
-            $data = new Selisih();
-            $data->bobot = 1.5;
-            $data->nilai = 4;
-            $data->keterangan = 'Kompetensi individu kelebihan 4 tingkat';
-            $data->user_id = $user_id;
-            $data->save();
+                $data = new Selisih();
+                $data->bobot = 7;
+                $data->nilai = -3;
+                $data->keterangan = 'Kriteria kekurangan  3 tingkat/level';
+                $data->user_id = $user_id;
+                $data->save();
 
-            $data = new Selisih();
-            $data->bobot = 1;
-            $data->nilai = -4;
-            $data->keterangan = 'Kompetensi individu kekurangan 4 tingkat';
-            $data->user_id = $user_id;
-            $data->save();
+                $data = new Selisih();
+                $data->bobot = 6;
+                $data->nilai = 4;
+                $data->keterangan = 'Kriteria kelebihan  4 tingkat/level';
+                $data->user_id = $user_id;
+                $data->save();
+
+                $data = new Selisih();
+                $data->bobot = 5;
+                $data->nilai = -4;
+                $data->keterangan = 'Kriteria kekurangan  4 tingkat/level';
+                $data->user_id = $user_id;
+                $data->save();
+
+                $data = new Selisih();
+                $data->bobot = 4;
+                $data->nilai = 5;
+                $data->keterangan = 'Kriteria kelebihan 5 tingkat/level';
+                $data->user_id = $user_id;
+                $data->save();
+
+                $data = new Selisih();
+                $data->bobot = 3;
+                $data->nilai = -5;
+                $data->keterangan = 'Kriteria kekurangan 5 tingkat/level';
+                $data->user_id = $user_id;
+                $data->save();
+
+                $data = new Selisih();
+                $data->bobot = 2;
+                $data->nilai = 6;
+                $data->keterangan = 'Kriteria kelebihan 6 tingkat/level';
+                $data->user_id = $user_id;
+                $data->save();
+
+                $data = new Selisih();
+                $data->bobot = 1;
+                $data->nilai = -6;
+                $data->keterangan = 'Kriteria kekurangan 6 tingkat/level';
+                $data->user_id = $user_id;
+                $data->save();
 
             $core_factor = DB::table('jenis_kriterias')->where('nama', 'Core Factor (CF)')->where('user_id', $user_id)->first();
             $seconday_factor = DB::table('jenis_kriterias')->where('nama', 'Secondary Factor (SF)')->where('user_id', $user_id)->first();
@@ -134,11 +162,11 @@ class User extends Authenticatable
             $data->user_id = $user_id;
             $data->save();
 
-            $merk_mobil = DB::table('kriteria')->where('nama', 'Merk Mobil')->where('user_id', $user_id)->first();
-            $kategori_mobil = DB::table('kriteria')->where('nama', 'Kategori Mobil')->where('user_id', $user_id)->first();
-            $harga = DB::table('kriteria')->where('nama', 'Harga')->where('user_id', $user_id)->first();
-            $jenis_transmisi = DB::table('kriteria')->where('nama', 'Jenis Transmisi')->where('user_id', $user_id)->first();
-            $jenis_bbm = DB::table('kriteria')->where('nama', 'Jenis BBM')->where('user_id', $user_id)->first();
+            $merk_mobil = DB::table('kriterias')->where('nama', 'Merk Mobil')->where('user_id', $user_id)->first();
+            $kategori_mobil = DB::table('kriterias')->where('nama', 'Kategori Mobil')->where('user_id', $user_id)->first();
+            $harga = DB::table('kriterias')->where('nama', 'Harga')->where('user_id', $user_id)->first();
+            $jenis_transmisi = DB::table('kriterias')->where('nama', 'Jenis Transmisi')->where('user_id', $user_id)->first();
+            $jenis_bbm = DB::table('kriterias')->where('nama', 'Jenis BBM')->where('user_id', $user_id)->first();
 
             $data = new SubKriteria();
             $data->nama = 'Toyota';
@@ -186,33 +214,75 @@ class User extends Authenticatable
             $data = new SubKriteria();
             $data->nama = 'Wagon/Hatchback';
             $data->kriteria_id = $kategori_mobil->id;
-            $data->nilai = 5;
+            $data->nilai = 11;
             $data->user_id = $user_id;
             $data->save();
 
             $data = new SubKriteria();
             $data->nama = 'MPV';
             $data->kriteria_id = $kategori_mobil->id;
-            $data->nilai = 4;
+            $data->nilai = 10;
             $data->user_id = $user_id;
             $data->save();
 
             $data = new SubKriteria();
             $data->nama = 'Pickup';
             $data->kriteria_id = $kategori_mobil->id;
-            $data->nilai = 3;
+            $data->nilai = 9;
             $data->user_id = $user_id;
             $data->save();
 
             $data = new SubKriteria();
             $data->nama = 'SUV';
             $data->kriteria_id = $kategori_mobil->id;
-            $data->nilai = 2;
+            $data->nilai = 8;
             $data->user_id = $user_id;
             $data->save();
 
             $data = new SubKriteria();
             $data->nama = 'Sedan';
+            $data->kriteria_id = $kategori_mobil->id;
+            $data->nilai = 7;
+            $data->user_id = $user_id;
+            $data->save();
+
+            $data = new SubKriteria();
+            $data->nama = 'Crossover';
+            $data->kriteria_id = $kategori_mobil->id;
+            $data->nilai = 6;
+            $data->user_id = $user_id;
+            $data->save();
+
+            $data = new SubKriteria();
+            $data->nama = 'Convertible';
+            $data->kriteria_id = $kategori_mobil->id;
+            $data->nilai = 5;
+            $data->user_id = $user_id;
+            $data->save();
+
+            $data = new SubKriteria();
+            $data->nama = 'Off road';
+            $data->kriteria_id = $kategori_mobil->id;
+            $data->nilai = 4;
+            $data->user_id = $user_id;
+            $data->save();
+
+            $data = new SubKriteria();
+            $data->nama = 'Elektrik';
+            $data->kriteria_id = $kategori_mobil->id;
+            $data->nilai = 3;
+            $data->user_id = $user_id;
+            $data->save();
+
+            $data = new SubKriteria();
+            $data->nama = 'Hybrid';
+            $data->kriteria_id = $kategori_mobil->id;
+            $data->nilai = 2;
+            $data->user_id = $user_id;
+            $data->save();
+
+            $data = new SubKriteria();
+            $data->nama = 'LCGC';
             $data->kriteria_id = $kategori_mobil->id;
             $data->nilai = 1;
             $data->user_id = $user_id;
@@ -256,14 +326,35 @@ class User extends Authenticatable
 
             // Seeder untuk jenis transmisi
             $data = new SubKriteria();
-            $data->nama = 'Otomatis';
+            $data->nama = 'Otomatis Convensional';
+            $data->kriteria_id = $jenis_transmisi->id;
+            $data->nilai = 5;
+            $data->user_id = $user_id;
+            $data->save();
+
+            $data = new SubKriteria();
+            $data->nama = 'Otomatis CVT';
+            $data->kriteria_id = $jenis_transmisi->id;
+            $data->nilai = 4;
+            $data->user_id = $user_id;
+            $data->save();
+
+            $data = new SubKriteria();
+            $data->nama = 'Manual';
+            $data->kriteria_id = $jenis_transmisi->id;
+            $data->nilai = 3;
+            $data->user_id = $user_id;
+            $data->save();
+
+            $data = new SubKriteria();
+            $data->nama = 'Dual Clutch (DCT)';
             $data->kriteria_id = $jenis_transmisi->id;
             $data->nilai = 2;
             $data->user_id = $user_id;
             $data->save();
 
             $data = new SubKriteria();
-            $data->nama = 'Manual';
+            $data->nama = 'Automated Manual Transmission (AMT)';
             $data->kriteria_id = $jenis_transmisi->id;
             $data->nilai = 1;
             $data->user_id = $user_id;
@@ -300,7 +391,7 @@ class User extends Authenticatable
                 } elseif($k->nama == 'Harga') {
                     $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 300 Juta')->where('user_id', $user_id)->first()->id;
                 } elseif($k->nama == 'Jenis Transmisi') {
-                    $sub_kriteria_id = SubKriteria::where('nama', 'Otomatis')->where('user_id', $user_id)->first()->id;
+                    $sub_kriteria_id = SubKriteria::where('nama', 'Manual')->where('user_id', $user_id)->first()->id;
                 } elseif($k->nama == 'Jenis BBM') {
                     $sub_kriteria_id = SubKriteria::where('nama', 'Solar')->where('user_id', $user_id)->first()->id;
                 }
@@ -329,7 +420,7 @@ class User extends Authenticatable
                 } elseif($k->nama == 'Harga') {
                     $sub_kriteria_id = SubKriteria::where('nama', 'Diatas 300 Juta')->where('user_id', $user_id)->first()->id;
                 } elseif($k->nama == 'Jenis Transmisi') {
-                    $sub_kriteria_id = SubKriteria::where('nama', 'Otomatis')->where('user_id', $user_id)->first()->id;
+                    $sub_kriteria_id = SubKriteria::where('nama', 'Otomatis CVT')->where('user_id', $user_id)->first()->id;
                 } elseif($k->nama == 'Jenis BBM') {
                     $sub_kriteria_id = SubKriteria::where('nama', 'Bensin')->where('user_id', $user_id)->first()->id;
                 }
