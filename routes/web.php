@@ -36,8 +36,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('penilaian', 'App\Http\Controllers\PenilaianController');
     Route::resource('users', 'App\Http\Controllers\UserController');
     Route::get('profile_matching', 'App\Http\Controllers\PenilaianController@profile_matching')->name('profile_matching');
-}); 
+});
 
+Route::resource('help', 'App\Http\Controllers\HelpController');
 Route::resource('halaman_utama', 'App\Http\Controllers\HalamanUtamaController');
 Route::get('data_mobil', 'App\Http\Controllers\VisitorController@data_mobil')->name('data_mobil');
 Route::get('detail_data_mobil/{id}', 'App\Http\Controllers\VisitorController@detail_data_mobil')->name('detail_data_mobil');
