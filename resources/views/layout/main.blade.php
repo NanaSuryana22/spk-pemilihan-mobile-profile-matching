@@ -27,10 +27,8 @@
                                                 <br>
                                                 <dl class="row">
                                                     <dt class="col-sm-12">
-                                                        <h4 align="center"><i class="fa fa-car"></i> Aplikasi ini dibuat
-                                                            untuk memenuhi syarat kelulusan untuk mendapatkan gelar Strata
-                                                            Satu (S1) di <a href="https://www.stmik-im.ac.id/"
-                                                                target="_blank" class="btn-link">STMIK Indonesia Mandiri</a>
+                                                        <h4 align="center"><i class="fa fa-car"></i>
+                                                            Sistem Pendukung Keputusan Pemilihan Mobil
                                                         </h4>
                                                     </dt>
                                                     <div class="col-md-12">
@@ -38,45 +36,30 @@
                                                     </div>
                                                 </dl>
                                             </div>
-                                            <div class="col-md-5">
-                                                <img src="{{ asset('img/icon-mobil.jpg') }}" class="img-thumbnail">
-                                            </div>
-                                            <div class="col-md-7">
-                                                <br />
-                                                <dl class="row">
-                                                    <dt class="col-sm-5">Nama Mahasiswa</dt>
-                                                    <dd class="col-sm-7">Arif Irawan</dd>
-                                                    <div class="col-md-12">
-                                                        <hr />
+                                            <div class="col-md-12">
+                                                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                                    <div class="carousel-inner">
+                                                      <center>
+                                                        <div class="carousel-item active">
+                                                            <img class="d-block w-80" style="height: 500px;" src="{{ asset('img/carry.jpg') }}" alt="First slide">
+                                                          </div>
+                                                          <div class="carousel-item">
+                                                            <img class="d-block w-80" style="height: 500px;" src="{{ asset('img/Hilux_D_Cab.png') }}" alt="Second slide">
+                                                          </div>
+                                                          <div class="carousel-item">
+                                                            <img class="d-block w-80" style="height: 500px;" src="{{ asset('img/triton.jpg') }}" alt="Third slide">
+                                                          </div>
+                                                      </center>
                                                     </div>
-                                                    <dt class="col-sm-5">NIM (Nomor Induk Mahasiswa)</dt>
-                                                    <dd class="col-sm-7">361742001</dd>
-                                                    <div class="col-md-12">
-                                                        <hr />
-                                                    </div>
-                                                    <dt class="col-sm-5">Program Studi</dt>
-                                                    <dd class="col-sm-7">Teknik Informatika</dd>
-                                                    <div class="col-md-12">
-                                                        <hr />
-                                                    </div>
-                                                    <dt class="col-sm-5">Dosen Pembimbing</dt>
-                                                    <dd class="col-sm-7">Chairuddin, IR. MT., MM., DR</dd>
-                                                    <div class="col-md-12">
-                                                        <hr />
-                                                    </div>
-                                                    <dt class="col-sm-5">Ketua Program Studi</dt>
-                                                    <dd class="col-sm-7">Chalifa Chazar, S.T, M.T</dd>
-                                                    <div class="col-md-12">
-                                                        <hr />
-                                                    </div>
-                                                    <dt class="col-sm-5">Judul Tugas Akhir</dt>
-                                                    <dd class="col-sm-7">Sistem Pendukung Keputusan Pemilihan Mobil Baru
-                                                        Menggunakan Metode Profile Matching</dd>
-                                                    <div class="col-md-12">
-                                                        <hr />
-                                                    </div>
-                                                    <hr />
-                                                </dl>
+                                                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                      <span class="sr-only">Previous</span>
+                                                    </a>
+                                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                      <span class="sr-only">Next</span>
+                                                    </a>
+                                                  </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <br>
