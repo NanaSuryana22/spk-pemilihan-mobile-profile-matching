@@ -51,8 +51,8 @@ Aplikasi ini dibangun menggunakan teknologi berikut:
 Ikuti langkah berikut untuk menjalankan project di local:
 
 ### 1️⃣ Clone Repository
-git clone https://github.com/NanaSuryana22/spk-pemilihan-mobile-profile-matching.git
-cd spk-pemilihan-mobile-profile-matching
+- git clone https://github.com/NanaSuryana22/spk-pemilihan-mobile-profile-matching.git
+- cd spk-pemilihan-mobile-profile-matching
 
 
 ### 2️⃣ Install Dependencies
@@ -65,21 +65,19 @@ php artisan key:generate
 ### 4️⃣ Setup Database
 
 Buka file `.env` lalu atur konfigurasi database:
-DB_DATABASE=nama_database
-DB_USERNAME=root
-DB_PASSWORD=
+- DB_DATABASE=nama_database
+- DB_USERNAME=root
+- DB_PASSWORD=
 
 ### 5️⃣ Migrasi Database
-php artisan migrate
+- php artisan migrate
 
 ### 6️⃣ Seed Data Awal
-php artisan db:seed
+- php artisan db:seed
 
 ### 7️⃣ Jalankan Server
-php artisan serve
-
+- php artisan serve
 Aplikasi dapat diakses di: http://127.0.0.1:8000
-
 
 ---
 
